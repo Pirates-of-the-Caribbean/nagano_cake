@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions',
     passwords: 'admin/passwords',
     registrations: 'admin/registrations'
-    }
+  }
   scope module: :public do
     root to: 'homes#top'
     resources :customers, only: [:show, :edit, :update]
