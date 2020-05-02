@@ -1,2 +1,70 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class = "page">
+<br><br><br>
+<div class="container">
+  <div class ="row">
+
+    <%# ジャンル検索の枠 %>
+    <div class ="col-sm-2">
+      <div class = "genre_search">
+      <h4>ジャンル検索</h4>
+      </div>
+      <%# eachでジャンル一覧を拾って並べてる。ジャンル名クリックでジャンル内商品一覧ページへ %>
+      <div class = "genre">
+        <br>
+
+        <% @genres.each do |genre| %>
+        <%= link_to genre.name, items_path(genre_id: genre.id) %>   <br><br>
+        <% end %>
+
+      </div>
+    </div>
+    <%# ジャンル検索ここまで %>
+
+    <%# 説明とおすすめ商品一覧 %>
+    <div class = "col-sm-offset-1 col-sm-9">
+      <div class = "top-image">
+        <div class = "top-text">
+        ようこそ、Nagano Cakeへ！<br>
+        長野県名産のプルーンをふんだんに使った、<br>
+        知る人ぞ知るケーキ屋さんです！<br>
+        </div>
+      </div>
+
+      <%# とりあえず画像貼り付けてますが、後々商品データに差し替え %>
+      <div class = "recommend"><br>
+        <h3><b>おすすめ商品</b></h3>
+      </div>
+        <div class = "recommend-items">
+          <div>
+            <div class = "recommend-items-image"><%= image_tag 'ショートケーキ.jpg', :size => '200x140' %></div><br>
+          ショートケーキ<br>
+          ¥450
+          </div>
+
+          <div>
+            <div class = "recommend-items-image"><%= image_tag 'チョコケーキ.jpg', :size => '200x140' %></div><br>
+          チョコケーキ<br>
+          ¥550
+          </div>
+
+          <div>
+            <div class = "recommend-items-image"><%= image_tag 'monbran.jpg', :size => '200x140' %></div><br>
+          モンブラン<br>
+          ¥600
+          </div>
+          
+          <div>
+            <div class = "recommend-items-image"><%= image_tag 'クッキー.jpg', :size => '200x140' %></div><br>
+          クッキー<br>
+          ¥350
+          </div>
+        </div>
+
+      <%# item一覧へのリンク %>
+      <div class ="show-more">
+        <%= link_to "もっと見る>>", items_path %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

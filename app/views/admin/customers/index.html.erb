@@ -1,0 +1,32 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-offset-1 col-mid-2 "><br><br>
+      <div class="admin-top"><h3>会員一覧</h3></div>
+    </div><br>
+  </div>
+  <div class = "row">
+    <div class = "col-md-offset-2 col-mid-8 ">
+      <table class="table table-hover">
+				<thead>
+					<tr>
+					<th>会員ID</th>
+					<th>氏名</th>
+					<th>メールアドレス</th>
+          <th>ステータス</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<% @customers.each do |customer| %>
+
+						<td><%= customer.id%> </td>
+						<td><%= link_to (customer.last_name + customer.first_name), admin_customer_path(customer) %></td>
+						<td><%= customer.email %></td>
+            <td><%= customer.validness %></td>
+					</tr>
+          <% end %>
+				</tbody>
+			</table>
+    </div>
+  </div>
