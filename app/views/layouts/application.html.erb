@@ -1,1 +1,2 @@
-<%= content_for?(:content) ? yield(:content) : yield %>
+ <!-- デフォルトを設定 content_for(:content)以外はyeild-->
+ <%= content_for?(:content) ? yield(:content) : yield %>
