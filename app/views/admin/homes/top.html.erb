@@ -1,2 +1,7 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-offset-1 col-mid-2 "><br><br>
+      <div class="admin-top"><h4>管理者画面</h4></div>
+    </div><br>
+
+          <h2>当日の注文数：<%= link_to @orders.count, admin_orders_path %> </h2>
