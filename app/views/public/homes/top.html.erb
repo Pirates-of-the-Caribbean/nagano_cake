@@ -1,18 +1,21 @@
-ながのケーキ TOPページ
+<div class = "page">
 <br><br><br>
 <div class="container">
   <div class ="row">
+
     <%# ジャンル検索の枠 %>
     <div class ="col-sm-2">
       <div class = "genre_search">
       <h4>ジャンル検索</h4>
       </div>
-      <%# eachでジャンル一覧を拾って並べたい %>
+      <%# eachでジャンル一覧を拾って並べてる。ジャンル名クリックでジャンル内商品一覧ページへ %>
       <div class = "genre">
         <br>
-        ケーキ<br><br>
-        焼き菓子<br><br>
-        ・・・
+
+        <% @genres.each do |genre| %>
+        <%= link_to genre.name, items_path(genre_id: genre.id) %>   <br><br>
+        <% end %>
+
       </div>
     </div>
     <%# ジャンル検索ここまで %>
@@ -27,16 +30,41 @@
         </div>
       </div>
 
+      <%# とりあえず画像貼り付けてますが、後々商品データに差し替え %>
       <div class = "recommend"><br>
         <h3><b>おすすめ商品</b></h3>
       </div>
-      <div class = "recommend-items">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+        <div class = "recommend-items">
+          <div>
+            <div class = "recommend-items-image"><%= image_tag 'ショートケーキ.jpg', :size => '200x140' %></div><br>
+          ショートケーキ<br>
+          ¥450
+          </div>
 
+          <div>
+            <div class = "recommend-items-image"><%= image_tag 'チョコケーキ.jpg', :size => '200x140' %></div><br>
+          チョコケーキ<br>
+          ¥550
+          </div>
+
+          <div>
+            <div class = "recommend-items-image"><%= image_tag 'monbran.jpg', :size => '200x140' %></div><br>
+          モンブラン<br>
+          ¥600
+          </div>
+          
+          <div>
+            <div class = "recommend-items-image"><%= image_tag 'クッキー.jpg', :size => '200x140' %></div><br>
+          クッキー<br>
+          ¥350
+          </div>
+        </div>
+
+      <%# item一覧へのリンク %>
+      <div class ="show-more">
+        <%= link_to "もっと見る>>", items_path %>
       </div>
     </div>
   </div>
+</div>
 </div>
