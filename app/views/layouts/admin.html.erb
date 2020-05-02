@@ -3,13 +3,14 @@
   <head>
     <title>namespace - admin</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
   </head>
 <body>
-	<header></header>
-<% content_for :content do %>  
+<% content_for :content do %> 
+  <%= render 'layouts/admin/header' %>
   <%= yield %>
+  <%= render 'layouts/admin/footer' %>
 <% end %>
 <%= render template: "layouts/application" %>
 </body>

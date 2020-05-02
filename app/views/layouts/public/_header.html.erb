@@ -1,0 +1,44 @@
+<header>
+	<div class="container">
+		<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample4">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">
+			</a>
+		</div>
+		
+		<div class="collapse navbar-collapse navbar-right" id="navbarEexample4">
+
+			<% if customer_signed_in? %>
+			<%= link_to "商品一覧", items_path, class: "btn btn-default navbar-btn" %>
+			<%= link_to "新規登録", new_customer_registration_path, class: "btn btn-default navbar-btn" %>
+			<%= link_to "ログイン", new_customer_session_path, class: "btn btn-default navbar-btn" %>
+
+			<% else %>
+			<%= link_to "マイページ", customer_path(current_customer), class: "btn btn-default navbar-btn" %>
+			<%= link_to "商品一覧", items_path, class: "btn btn-default navbar-btn" %>
+			<%= link_to "カート", cart_items_path, class: "btn btn-default navbar-btn" %>
+			<%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: "btn btn-default navbar-btn" %>
+		</div>
+		</nav>
+
+		 <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-5">
+			<nav class="nav navbar-nav navbar-left">
+				<div id="LOGO" class="navbar-brand">LOGO</div>
+			</nav>
+
+			<nav>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="nav-item">商品一覧</li>
+					<li class="nav-item">新規登録</li>
+					<li class="nav-item">ログイン</li>
+				</ul>
+			</nav>
+		</nav>
+	</div> -->
+</header>
