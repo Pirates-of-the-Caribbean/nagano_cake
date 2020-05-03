@@ -15,7 +15,7 @@
 			<div class="collapse navbar-collapse navbar-right" id="navbarEexample4">
 
 				<% if customer_signed_in? %>
-				<p class="navbar-text">ようこそ、<%= current_customer.name %>さん！</p>
+				<p class="navbar-text">ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！</p>
 				<%= link_to "マイページ", customer_path(current_customer), class: "btn btn-default navbar-btn" %>
 				<%= link_to "商品一覧", items_path, class: "btn btn-default navbar-btn" %>
 				<%= link_to "カート", cart_items_path, class: "btn btn-default navbar-btn" %>
