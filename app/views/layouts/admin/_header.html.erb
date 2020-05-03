@@ -12,7 +12,7 @@
 				</a>
 			</div>
 
-			<% if customer_signed_in? %>
+			<% if admin_signed_in? %>
 				<div class="collapse navbar-collapse navbar-right" id="navbarEexample4">
 					<%= link_to "商品一覧", admin_items_path, class: "btn btn-default navbar-btn" %>
 					<%= link_to "会員一覧", admin_customers_path, class: "btn btn-default navbar-btn" %>
