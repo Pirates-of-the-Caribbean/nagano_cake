@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   }
   scope module: :public do
     root to: 'homes#top'
-    resources :customers, only: [:show, :edit, :update]
     get '/customers/withdraw' => 'customers#withdraw'
+    resources :customers, only: [:show, :edit, :update]
+    put "/customers/:id/leave" => "customers#leave", as: 'customer_leave'
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
