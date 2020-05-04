@@ -1,0 +1,15 @@
+<h2>商品編集</h2>
+
+    <%= form_for(@item, url:admin_item_path) do |f| %>
+    <h4>商品名</h4>
+    <%= f.text_field :name %>
+    <h4>商品説明</h4>
+   <%= f.text_area :detail %>
+    <h4>税抜価格</h4>
+    <%= f.number_field :price %>
+    <h4>商品画像</h4>
+    <%= attachment_image_tag @item, :image, :fill, 40, 40, fallback: 'no_image.jpg' %>
+    <%= f.attachment_field :image %>
+
+    <%= f.submit '変更を保存' %>
+<% end %>

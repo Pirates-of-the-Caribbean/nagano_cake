@@ -1,0 +1,16 @@
+<h1>商品登録</h1>
+<%= form_for(@item,url:admin_items_path) do |f| %>
+
+
+<%= f.text_field :name %>
+<%= f.text_area :detail %>
+<%= f.number_field :price %>
+<%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
+<%= f.select :sale_status, [["販売中","販売中"], [ "販売停止中", "販売停止中"]], include_blank: "選択して下さい" %>
+
+<%= f.attachment_field :image %>
+<%= f.submit '新規登録' %>
+  <% end %>
+
+
+
