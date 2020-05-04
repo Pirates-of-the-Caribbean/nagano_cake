@@ -1,0 +1,38 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-offset-1 col-mid-2 "><br><br>
+      <div class="admin-top"><h3>注文履歴一覧</h3></div>
+    </div><br>
+  </div>
+  <div class = "row">
+    <div class = "col-md-offset-2 col-mid-8 ">
+      <table class="table table-hover">
+				<thead>
+					<tr>
+					<th>購入日時</th>
+					<th>購入者</th>
+					<th>注文個数</th>
+          <th>注文ステータス</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<% @orders.each do |order| %>
+
+						<td><%= link_to admin_order_path(order.id) do %>
+            <%= order.created_at %> <% end %></td>
+						<td>
+						<%= order.customer.last_name %> <%= order.customer.first_name %>
+            </td>
+
+            <%# 注文数がこれで拾えているか怪しい。 %>
+						<td><%= order.order_item.quantity.count %></td>
+
+            <td><%= order.status %></td>
+					</tr>
+          <% end %>
+				</tbody>
+			</table>
+    </div>
+  </div>

@@ -1,0 +1,30 @@
+<h2>ジャンル一覧・追加</h2>
+
+<%= form_for(@genre,url:admin_genres_path) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.label :valid_flag, :有効%>
+  <%= f.radio_button :valid_flag, "有効" %>
+  <%= f.label :valid_flag, :無効%>
+  <%= f.radio_button :valid_flag, "無効" %>
+  <%= f.submit "追加" %>
+<% end %>
+
+
+
+<table class="table table-striped">
+	<thead>
+			<tr>
+				<th>ジャンル</th>
+				<th>状態</th>
+				<th></th>
+			</tr>
+	</thead>
+	<tbody>
+				<% @genres.each do |genre| %>
+			<tr>
+				<td><%= genre.name %></td>
+				<td><%= genre.valid_flag  %></td>
+				<td><%= link_to "編集する" ,edit_admin_genre_path(genre.id) %></td>
+			</tr>
+	</tbody>
+	<% end %>
