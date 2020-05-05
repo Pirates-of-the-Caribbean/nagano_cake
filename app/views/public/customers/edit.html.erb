@@ -35,10 +35,9 @@
 					</tr>
 				</table>
 				<%= f.submit "編集内容を保存する", class: "btn btn-primary" %>
-				<%= link_to "退会する", { controller: :customers, action: :withdraw }, class: "btn btn-danger" %>
+				<%= link_to "退会する", customers_withdraw_path, class: "btn btn-danger" %>
 				<% end %>
 			</div>
-			<%= link_to "退会する", customers_withdraw_path, class: "btn btn-danger" %>
 		</div>
 	</div>
 </div>
