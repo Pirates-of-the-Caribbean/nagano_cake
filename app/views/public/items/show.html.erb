@@ -1,0 +1,32 @@
+
+<h2>商品詳細</h2>
+
+<div class ="col-sm-2">
+  <div class = "genre_search">
+    <h4>ジャンル検索</h4>
+  </div>
+  <%# eachでジャンル一覧を拾って並べてる。ジャンル名クリックでジャンル内商品一覧ページへ %>
+  <div class = "genre">
+    <br>
+    <% @genres.each do |genre| %>
+    <%= link_to genre.name, items_path(genre_name: genre.name) %>   <br><br>
+    <% end %>
+
+  </div>
+</div>
+
+
+
+<%= attachment_image_tag @item, :image, :fill, 40, 40, fallback: 'no_image.jpg' %>
+<%= @item.name %>
+<%= @item.price %>
+
+
+
+<%= form_for(@cart_item ,url:cart_items_path) do |f| %>
+<%= f.hidden_field :item_id, :value => @item.id %>
+<%= f.select :quantity, options_for_select((1..10)), include_blank: "選択して下さい" %>
+<%= f.submit "カートに入れる" %>
+<% end %>
+
+<!-- (@user,@cart_item.id) -->
