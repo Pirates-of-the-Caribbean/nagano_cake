@@ -1,4 +1,8 @@
 class Public::ShippingAddressesController < Public::Base
+	# ログインしている人以外は配送先機能を使えなようにする
+	before_action :authenticate_customer!
+	# 直打ち禁止、ログインユーザー以外の配送先を見れないようにする
+	before_action :correct_customer, only: [:edit, :update]
 	def create
 		shipping_address = current_customer.shipping_addresses.new(shipping_address_params)
 		shipping_address.customer_id = current_customer.id
@@ -36,5 +40,12 @@ class Public::ShippingAddressesController < Public::Base
 	private
 	def shipping_address_params
 		params.require(:shipping_address).permit( :postcode, :address, :name)
+	end
+
+	def correct_customer
+		shipping_address = ShippingAddress.find(params[:id])
+		unless shipping_address.customer == current_customer
+			redirect_to root_path
+		end
 	end
 end

@@ -6,8 +6,8 @@
 			</div>
 		</div>
 
-		<%= form_for(@shipping_address) do |f| %>
 		<div class="row">
+		<%= form_for(@shipping_address) do |f| %>
 			<div class="col-sm-8 col-sm-offset-4">
 				<table>
 					<tr>
@@ -24,12 +24,10 @@
 					</tr>
 				</table>
 			</div>
-		</div>
-		<div class="row">
 			<div class="col-sm-offset-8 col-sm-2 col-sm-2">
 				<%= f.submit "編集する" %>
 			</div>
-		</div>
 		<% end %>
+		</div>
 	</div>
 </div>
