@@ -27,7 +27,9 @@
             </td>
 
             <%# 注文数がこれで拾えているか怪しい。 %>
-						<td><%= order.order_item.quantity.count %></td>
+						<td>
+						<%= order.order_items.pluck(:quantity).sum %>
+						</td>
 
             <td><%= order.status %></td>
 					</tr>
