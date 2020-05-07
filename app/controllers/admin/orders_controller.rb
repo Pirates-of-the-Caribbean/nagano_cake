@@ -29,31 +29,4 @@ private
     params.require(:order).permit(:status)
   end
 
-
-  # def update 「なにこれ？？」
-  #   # order/showから渡ってきたorder_idを参照してorderに情報を入れる
-  #   order = Order.find(params[:id])
-  #   # order_itemsに上で指定したorderに紐付くorder_itemを全て入れる
-  #   order_items = order.order_items.all
-
-  # end
-
-  # !未実装!　紐付くorder_itemのproductionが一つでも製作中(2)になれば「orderのstatusを製作中(2)」に自動更新
-  # !未実装!　紐付く注文商品の製作ステータスが全て「制作完了」になれば「発送準備中」に自動更新
-
-  # enum production_status:{
-  #       着手不可: 0,
-  #       製作待ち: 1,
-  #       製作中: 2,
-  #       製作完了: 3
-  #   }
-
-  # enum (order)status:{
-  #       入金待ち: 0,
-  #       入金確認: 1,
-  #       製作中: 2,
-  #       発送準備中: 3,
-  #       発送済み: 4
-  #   }
-
 end

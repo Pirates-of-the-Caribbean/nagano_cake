@@ -22,7 +22,7 @@ class Admin::GenresController < Admin::Base
 
 	private
     def genre_params
-      params.require(:genre).permit(:name, :valid_flag,)
+      params.require(:genre).permit(:name, :valid_flag)
     end
 
 

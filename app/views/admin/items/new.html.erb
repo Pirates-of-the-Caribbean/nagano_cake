@@ -2,15 +2,18 @@
 <%= form_for(@item,url:admin_items_path) do |f| %>
 
 
-<%= f.text_field :name %>
-<%= f.text_area :detail %>
-<%= f.number_field :price %>
-<%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
+商品名<br>
+<%= f.text_field :name %><br>
+商品説明<br>
+<%= f.text_area :detail %><br>
+税抜価格<br>
+<%= f.text_field :price %><br>
+ジャンル<br>
+<%= f.collection_select(:genre_id, Genre.all, :id, :name) %><br>
+販売ステータス<br>
 <%= f.select :sale_status, [["販売中","販売中"], [ "販売停止中", "販売停止中"]], include_blank: "選択して下さい" %>
-
-<%= f.attachment_field :image %>
+<br>
+商品画像<br>
+<%= f.attachment_field :image %><br>
 <%= f.submit '新規登録' %>
   <% end %>
-
-
-
