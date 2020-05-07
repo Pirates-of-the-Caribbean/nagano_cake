@@ -47,6 +47,15 @@ class Public::OrdersController < Public::Base
     def thanks
     end
 
+    def show
+        @order = Order.find(params[:id])
+        @order_items = OrderItem.where(order_id: @order.id).includes(:item)
+        if @order.customer_id == current_customer.id
+        else
+            redirect_to orders_path
+        end
+    end
+
     private
     def order_params
         params.require(:order).permit(:postcode, :address, :name, :payment_method, :carriage, :total_price)
