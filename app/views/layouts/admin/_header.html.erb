@@ -1,6 +1,6 @@
 <header>
 	<div class="container">
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default row">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample4">
 					<span class="sr-only">Toggle navigation</span>
@@ -26,7 +26,8 @@
 						<div class="input-group">
 			                <%= text_field_tag :search, params[:search], placeholder: "キーワード検索", class: "form-control" %>
 			                <span class="input-group-btn">
-			                    <%= button_tag "検索", :name => nil, class: "btn btn-primary" %>
+			                    <%= button_tag "検索",:name => nil, class: "btn btn-default " %>
+			                    <!-- glyphicon glyphicon-search -->
 			                </span>
 						</div>
 					</form>
