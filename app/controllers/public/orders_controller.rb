@@ -1,4 +1,8 @@
 class Public::OrdersController < Public::Base
+    def index
+        @orders = Order.all
+    end
+
     def new
         @order = Order.new
         @customer = Customer.find_by(id: current_customer.id)
