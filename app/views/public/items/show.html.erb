@@ -1,19 +1,20 @@
 
 <h2>商品詳細</h2>
 
-<div class ="col-sm-2">
+
+  <div class ="col-sm-2">
   <div class = "genre_search">
     <h4>ジャンル検索</h4>
   </div>
-  <%# eachでジャンル一覧を拾って並べてる。ジャンル名クリックでジャンル内商品一覧ページへ %>
   <div class = "genre">
     <br>
+
     <% @genres.each do |genre| %>
-    <%= link_to genre.name, items_path(genre_name: genre.name) %>   <br><br>
+    <%= link_to genre.name, items_path(genre_id: genre.id) %>   <br><br>
     <% end %>
 
   </div>
-</div>
+ </div>
 
 
 
@@ -30,3 +31,4 @@
 <% end %>
 
 <!-- (@user,@cart_item.id) -->
+<!-- (genre_name: genre.name) -->
