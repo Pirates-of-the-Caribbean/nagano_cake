@@ -1,13 +1,26 @@
 class Public::CartItemsController < Public::Base
     def create
-        @cart_item = CartItem.new(cart_item_params)
-        @cart_item.customer_id = current_customer.id
-        if @cart_item.save
-            redirect_to item_path(@cart_item.item_id)
+        cart_items = CartItem.all
+        isExist = false
+        id = 0
+        cart_items.each do |cart_item|
+            if cart_item.customer_id == current_customer.id
+                if cart_item.item_id == cart_item_params[:item_id].to_i
+                isExist = true
+                id = cart_item.id
+                end
+            end
+        end
+        if isExist
+            cart_item = CartItem.find(id)
+            sum = cart_item.quantity.to_i + cart_item_params[:quantity].to_i
+            cart_item.update_attributes(quantity: sum)
+            redirect_to item_path(cart_item.item_id)
         else
-            @item = Item.find(@cart_item.item_id)
-            @cart = CartItem.new
-            render 'public/items/show'
+            cart_item = CartItem.new(cart_item_params)
+            cart_item.customer_id = current_customer.id
+            cart_item.save
+            redirect_to item_path(cart_item.item_id)
         end
     end
 
