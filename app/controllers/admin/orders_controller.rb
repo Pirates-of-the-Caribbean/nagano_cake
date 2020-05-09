@@ -1,7 +1,15 @@
 class Admin::OrdersController < ApplicationController
 
   def index
-    @orders = Order.all.includes(:order_items)
+    @orders = Order.page(params[:page]).reverse_order
+  end
+
+  def todays_order
+    @orders = Order.created_today.page(params[:page]).reverse_order
+  end
+
+  def customers_order
+    @customers = Customer.find(params[:id])
   end
 
   def show

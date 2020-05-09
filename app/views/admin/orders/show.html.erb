@@ -10,7 +10,9 @@
       <th class="col-md-2">購入者</th>
       <td class="col-md-10">
         <%# 購入者氏名 %>
+        <%= link_to admin_customer_path(@order.customer.id) do %>
         <%= @order.customer.last_name + " " + @order.customer.first_name %>
+        <% end %>
       </td>
     </tr>
 
