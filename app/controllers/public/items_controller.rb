@@ -1,4 +1,5 @@
 class Public::ItemsController <  Public::Base
+	before_action :authenticate_customer!, except: [:index, :show]
 	def index
 		@genres = Genre.all
 		if params[:genre_id]

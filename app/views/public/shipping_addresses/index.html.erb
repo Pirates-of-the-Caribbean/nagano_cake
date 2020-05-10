@@ -8,6 +8,15 @@
 
 		<div class="row">
 			<%= form_for(@shipping_address) do |f| %>
+				<% if @shipping_address.errors.any? %>
+				  <div id="error_explanation" class="alert alert-danger">
+				    <ul>
+				      <% @shipping_address.errors.full_messages.each do |message| %>
+				        <li><%= message %></li>
+				      <% end %>
+				    </ul>
+				  </div>
+				<% end %>
 				<table class="table col-sm-8">
 					<tr>
 						<th class="col-sm-2">郵便番号(ハイフンなし)</th>

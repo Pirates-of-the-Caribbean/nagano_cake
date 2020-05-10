@@ -1,4 +1,5 @@
 class Public::OrdersController < Public::Base
+    before_action :correct_customer, only: [ :show]
     def index
         @orders = Order.all
     end
@@ -59,6 +60,13 @@ class Public::OrdersController < Public::Base
     private
     def order_params
         params.require(:order).permit(:postcode, :address, :name, :payment_method, :carriage, :total_price)
+    end
+
+    def correct_customer
+        order = Order.find(params[:id])
+        unless order.customer_id == current_customer.id
+            redirect_to root_path
+        end
     end
 
 end

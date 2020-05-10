@@ -6,6 +6,12 @@ class Customer < ApplicationRecord
   has_many :shipping_addresses,dependent: :destroy
   has_many :cart_items,dependent: :destroy
   has_many :orders,dependent: :destroy
+
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
+  validates :first_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
+
   # ログインするときに退会済みのユーザーをはじくためのメソッドを作成する
   def active_for_authentication?
   	super && (self.validness == true)
