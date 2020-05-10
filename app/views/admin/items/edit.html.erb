@@ -7,6 +7,8 @@
    <%= f.text_area :detail %>
     <h4>税抜価格</h4>
     <%= f.number_field :price %>
+    <h4>販売ステータス</h4><br>
+    <%= f.select :sale_status, [["販売中","販売中"], [ "販売停止中", "販売停止中"]], include_blank: "選択して下さい" %>
     <h4>商品画像</h4>
     <%= attachment_image_tag @item, :image, :fill, 40, 40, fallback: 'no_image.jpg' %>
     <%= f.attachment_field :image %>
