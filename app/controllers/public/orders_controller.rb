@@ -5,9 +5,14 @@ class Public::OrdersController < Public::Base
     end
 
     def new
-        @order = Order.new
-        @customer = Customer.find_by(id: current_customer.id)
-        @registered_addresses = ShippingAddress.where(customer_id: current_customer.id)
+        @cart_items = CartItem.where(customer_id: current_customer.id)
+        if @cart_items.empty?
+            redirect_to cart_items_path
+        else
+            @order = Order.new
+            @customer = Customer.find_by(id: current_customer.id)
+            @registered_addresses = ShippingAddress.where(customer_id: current_customer.id)
+        end
     end
 
     def confirm
