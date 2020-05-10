@@ -1,20 +1,5 @@
  <h2>商品一覧</h2>
 
-
-
-<!-- <h4>ジャンル検索</h4>
-      </div>
-      <%# eachでジャンル一覧を拾って並べてる。ジャンル名クリックでジャンル内商品一覧ページへ %>
-      <div class = "genre">
-        <br>
-
-        <% @genres.each do |genre| %>
-        <%= link_to genre.name, items_path(genre_id: genre.id) %>   <br><br>
-        <% end %>
-
-      </div>
-    </div> -->
-
  <div class ="col-sm-2">
  	<div class = "genre_search">
  		<h4>ジャンル検索</h4>
@@ -23,20 +8,23 @@
  		<br>
 
  		<% @genres.each do |genre| %>
- 		<%= link_to genre.name, items_path(genre_id: genre.id) %>   <br><br>
+ 		<% if genre.valid_flag =="有効" %>
+ 		<%= link_to genre.name, items_path(genre_id: genre.id) %><br>
  		<% end %>
-
+ 		<% end %>
  	</div>
  </div>
 
  <% @items.each do |item| %>
+ <% if item.sale_status =="販売中" %>
  <tr>
  	<td>
  		<%= link_to "詳細" ,item_path(item.id) %>
- 		<%= attachment_image_tag item, :image, :fill, 40, 40, fallback: 'no_image.jpg' %>
+ 		<%= attachment_image_tag item, :image, :size => '200x140', fallback: 'no_image.jpg' %>
  		<%= item.name %>
  		<td><%= item.price %></td>
  	</tr>
  </tbody>
 
+ <% end %>
  <% end %>

@@ -5,7 +5,7 @@ class Public::ItemsController <  Public::Base
 		if params[:genre_id]
 		@items=Item.where(genre_id: params[:genre_id])
 		else
-		@items = Item.all
+		@items = Item.page(params[:page]).reverse_order
 	end
 	end
 
@@ -19,5 +19,4 @@ class Public::ItemsController <  Public::Base
 		@item=Item.find(params[:id])
 	end
 	end
-	
 end

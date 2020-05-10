@@ -1,5 +1,13 @@
 <h2>ジャンル一覧・追加</h2>
 
+<% if @genre.errors.any? %>
+        <div><%= @genre.errors.count %>件のerrorが発生しました</div>
+        <ul><% @genre.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+   		 </ul>
+    <% end %>
+
 <%= form_for(@genre,url:admin_genres_path) do |f| %>
   <%= f.text_field :name %>
   <%= f.label :valid_flag, :有効%>

@@ -10,18 +10,19 @@
     <br>
 
     <% @genres.each do |genre| %>
+   
     <%= link_to genre.name, items_path(genre_id: genre.id) %>   <br><br>
     <% end %>
+
 
   </div>
  </div>
 
 
-
+ 
 <%= attachment_image_tag @item, :image, :fill, 40, 40, fallback: 'no_image.jpg' %>
 <%= @item.name %>
 <%= @item.price %>
-
 
 
 <%= form_for(@cart_item ,url:cart_items_path) do |f| %>

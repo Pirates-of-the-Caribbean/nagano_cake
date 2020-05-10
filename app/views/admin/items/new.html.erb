@@ -1,6 +1,15 @@
 <h1>商品登録</h1>
 <%= form_for(@item,url:admin_items_path) do |f| %>
 
+<% if @item.errors.any? %>
+        <div><%= @item.errors.count %>件のerrorが発生しました</div>
+        <ul><% @item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+   		 </ul>
+    <% end %>
+
+
 
 商品名<br>
 <%= f.text_field :name %><br>
