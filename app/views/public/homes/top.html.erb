@@ -29,40 +29,41 @@
         知る人ぞ知るケーキ屋さんです！<br>
         </div>
       </div>
-
-      <%# とりあえず画像貼り付けてますが、後々商品データに差し替え %>
-      <div class = "recommend"><br>
-        <h3><b>おすすめ商品</b></h3>
       </div>
-        <div class = "recommend-items">
-          <div>
-            <div class = "recommend-items-image"><%= image_tag 'ショートケーキ.jpg', :size => '200x140' %></div><br>
-          ショートケーキ<br>
-          ¥450
-          </div>
+      </div>
 
-          <div>
-            <div class = "recommend-items-image"><%= image_tag 'チョコケーキ.jpg', :size => '200x140' %></div><br>
-          チョコケーキ<br>
-          ¥550
-          </div>
 
-          <div>
-            <div class = "recommend-items-image"><%= image_tag 'monbran.jpg', :size => '200x140' %></div><br>
-          モンブラン<br>
-          ¥600
-          </div>
-          
-          <div>
-            <div class = "recommend-items-image"><%= image_tag 'クッキー.jpg', :size => '200x140' %></div><br>
-          クッキー<br>
-          ¥350
+      <div class="row">
+        <div class ="col-sm-offset-2">
+            <div class = "recommend"><br>
+              <h3><b>おすすめ商品</b></h3>
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class=" col-sm-offset-2 col-sm-9">
+          <div class = "row">
+            <% @items.each do |item| %>
+              <%= link_to item_path(item.id) do %>
+              <div class = "col-sm-3">
+                <%= attachment_image_tag item, :image, :size => '200x140', fallback:"no_image.jpg" %><br>
+                <%= item.name %><% end %><br>
+                <%= item.price %>円
+                <% if item.sale_status == "販売停止中" %>
+                <span class="label label-danger"> 売り切れ</span>
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
+      </div>
+
 
       <%# item一覧へのリンク %>
       <div class ="show-more">
         <%= link_to "もっと見る>>", items_path %>
+      </div>
       </div>
     </div>
   </div>

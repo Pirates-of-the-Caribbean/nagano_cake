@@ -1,4 +1,4 @@
-class Admin::OrderItemsController < ApplicationController
+class Admin::OrderItemsController < Admin::Base
   def update
     order_item = OrderItem.find(params[:id])
     # order_item_params(production_status)の値を更新
@@ -12,7 +12,7 @@ class Admin::OrderItemsController < ApplicationController
     end
 
     #order_item.production_status更新後、「製作完了」になれば
-    # (「order_item.statusが「製作完了」になったタイミングでないと全て「製作完了」の状態にならないと思う。反例が出なければこのままで。)
+    # (「order_item.statusが「製作完了」になったタイミングでないと全ての商品のステータスが「製作完了」の状態にならない)
     if order_item.production_status == "製作完了"
       # order_item.order.order_items.production_statusが全て「製作完了」かどうかを判定して
       if order_item.order.order_items.all?{|order_item| order_item.production_status == "製作完了"}
@@ -27,7 +27,7 @@ class Admin::OrderItemsController < ApplicationController
     redirect_to admin_order_path(order_item.order_id)
   end
 
-  
+
 
   private
   def order_item_params
