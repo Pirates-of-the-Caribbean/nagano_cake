@@ -3,31 +3,44 @@
 	<div class="row">
     <h3><span class="label label-default">注文情報入力</span></h3>
 <%= form_for(@order, url:orders_confirm_path) do |f| %>
-    <div>
+    <div class="order_content">
         <h4>支払方法</h4>
-        <label><%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>クレジットカード</label><br>
-        <label><%= f.radio_button :payment_method, :銀行振込 %>銀行振込</label>
+        <label class="order_select"><%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>クレジットカード</label><br>
+        <label class="order_select"><%= f.radio_button :payment_method, :銀行振込 %>銀行振込</label>
     </div>
-    <div>
+    <div class="order_content">
         <h4>お届け先</h4>
         <%= form_tag(orders_confirm_path,:method => 'get') do %>
-            <div>
+            <div class="order_select">
                 <label><%= radio_button_tag 'address_select', :ご自身の住所, checked: "checked" %>ご自身の住所</label><br>
                 <%= @customer.postcode %><%= @customer.address %>
                 <%= @customer.last_name %><%= @customer.first_name %>
             </div>
-            <div>
+            <div class="order_select">
             <label><%= radio_button_tag 'address_select', :登録済住所から選択 %>登録済住所から選択</label><br>
                 <%= f.collection_select(:address, @registered_addresses, :full_shipping_address, :full_shipping_address) %>
             </div>
-            <div>      
+            <div class="order_select">      
             <label><%= radio_button_tag 'address_select', :新しいお届け先 %>新しいお届け先</label><br>
-                郵便番号(ハイフンなし)<%= text_field_tag 'new_postcode' %><br>
-                住所<%= text_field_tag 'new_address' %><br>
-                宛名<%= text_field_tag 'new_name' %>
+                <table class="table-noborder">
+                    <tr>
+                        <th>郵便番号(ハイフンなし)</th>
+                        <td><%= text_field_tag 'new_postcode' %></td>
+                    </tr>
+                    <tr>
+                        <th>住所</th>
+                        <td><%= text_field_tag 'new_address' %></td>
+                    </tr>
+                    <tr>
+                        <th>宛名</th>
+                        <td><%= text_field_tag 'new_name' %></td>
+                    </tr>
+                </table>
             </div>            
     </div>
-    <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
+    <div class="success_btn">
+    <%= f.submit '確認画面へ進む', class: "btn btn-primary", id:"cart_success_btn" %>
+    </div>    
         <% end %>
 <% end %>
 </div>

@@ -3,20 +3,26 @@
 	<div class="row">
     <h3><span class="label label-default">注文情報確認</span></h3>
 <%= form_for(@order, url:orders_path) do |f| %>
+<div class="confirm_content">
 <div class="col-sm-8">
-<table class="table">
-    <tr>
+<table class="table table-bordered">
+<thead>
+    <tr class="active">
         <th>商品名</th>
-        <th>単価（税込）</th>
-        <th>数量</th>
-        <th>小計</th>
-        <th></th>
+        <th class="col-sm-2">単価（税込）</th>
+        <th class="col-sm-1">数量</th>
+        <th class="col-sm-2">小計</th>
     </tr>
+</thead>
+<tbody>
         <% @sum_price = 0 %>
         <% @cart_items.each do |cart_item| %>
             <% if cart_item.customer_id == current_customer.id %>
         <tr>
-            <td><%= cart_item.item.name %></td>
+            <td>
+                <%= attachment_image_tag cart_item.item, :image, fallback: "no_image.jpg", size:'100x80' %>
+                <%= cart_item.item.name %>
+            </td>
             <td>
                 <% price_including_tax = cart_item.item.price * 1.1 %>
                 <%= price_including_tax.floor %>
@@ -30,26 +36,27 @@
         <% @sum_price += subtotal_price.floor %>
             <% end %>
         <% end %>
+</tbody>
 </table>
 </div>
 <div class="col-sm-4">
-<table class="table">
+<table class="table table-bordered">
     <tr>
-        <th>送料</th>
+        <th class="active">送料</th>
         <td><%= @order.carriage %></td>
     </tr>
     <tr>
-        <th>商品合計</th>
+        <th class="active">商品合計</th>
         <td><%= @sum_price %></td>
     </tr>
     <tr>
-        <th>請求金額</th>
+        <th class="active">請求金額</th>
         <td><%= @order.total_price = @order.carriage + @sum_price%></td>
     </tr>
 
 </table>
 </div>
-
+</div>
 <h4>支払方法</h4><%= @order.payment_method %>
 <h4>お届け先</h4>
     <%= @order.postcode %>
@@ -61,8 +68,11 @@
 <%= f.hidden_field :address, value:@order.address %>
 <%= f.hidden_field :name, value:@order.name %>
 <%= f.hidden_field :total_price, value:@order.total_price %>
-    <%= f.submit '購入を確定する', class: "btn btn-success" %>
+<div class="success_btn">    
+    <%= f.submit '購入を確定する', class: "btn btn-success", id:"cart_success_btn" %>
+</div>
 <% end %>
+</div>
 </div>
 </div>
 </div>
