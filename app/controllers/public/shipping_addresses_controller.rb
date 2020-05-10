@@ -1,13 +1,15 @@
 class Public::ShippingAddressesController < Public::Base
-	# ログインしている人以外は配送先機能を使えなようにする
-	before_action :authenticate_customer!
 	# 直打ち禁止、ログインユーザー以外の配送先を見れないようにする
 	before_action :correct_customer, only: [:edit, :update]
 	def create
-		shipping_address = current_customer.shipping_addresses.new(shipping_address_params)
-		shipping_address.customer_id = current_customer.id
-		shipping_address.save
-		redirect_to shipping_addresses_path
+		@shipping_address = current_customer.shipping_addresses.new(shipping_address_params)
+		@shipping_address.customer_id = current_customer.id
+		if @shipping_address.save
+			redirect_to shipping_addresses_path
+		else
+			@shipping_addresses = current_customer.shipping_addresses.all
+			render 'index'
+		end
 	end
 
 	def index
@@ -20,14 +22,11 @@ class Public::ShippingAddressesController < Public::Base
 	end
 
 	def update
-		shipping_address = ShippingAddress.find(params[:id])
-		if shipping_address.update(shipping_address_params)
+		@shipping_address = ShippingAddress.find(params[:id])
+		if @shipping_address.update(shipping_address_params)
 			redirect_to shipping_addresses_path
 		else
-			@shipping_address = current_customer.shipping_addresses.new
-			@shipping_addresses = current_customer.shipping_addresses.all
-			flash[:error] = "エラーです"
-			render 'index'
+			render 'edit'
 		end
 	end
 

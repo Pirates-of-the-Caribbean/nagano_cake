@@ -1,5 +1,5 @@
 class Public::CustomersController < Public::Base
-	
+	before_action :correct_customer, only: [:withdraw, :show, :edit]
 	# 退会ページの編集
 	def withdraw
 	end
@@ -30,5 +30,11 @@ class Public::CustomersController < Public::Base
 	private
     def customer_params
       params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode,:address, :telephone_number, :email, :validness)
+    end
+    def correct_customer
+    	customer = Customer.find(params[:id])
+    	unless customer.id == current_customer.id
+    		redirect_to root_path
+    	end
     end
 end

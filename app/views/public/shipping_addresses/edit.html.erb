@@ -8,6 +8,15 @@
 
 		<div class="row">
 		<%= form_for(@shipping_address) do |f| %>
+			<% if @shipping_address.errors.any? %>
+			  <div id="error_explanation" class="alert alert-danger">
+			    <ul>
+			      <% @shipping_address.errors.full_messages.each do |message| %>
+			        <li><%= message %></li>
+			      <% end %>
+			    </ul>
+			  </div>
+			<% end %>
 			<div class="col-sm-8 col-sm-offset-4">
 				<table>
 					<tr>
@@ -16,7 +25,7 @@
 					</tr>
 					<tr>
 						<th>住所</th>
-						<td><%= f.text_field :address %></td>
+						<td><%= f.text_field :address, size: "80" %></td>
 					</tr>
 					<tr>
 						<th>宛名</th>
