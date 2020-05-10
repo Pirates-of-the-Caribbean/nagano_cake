@@ -1,11 +1,11 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-md-offset-1 col-mid-2 "><br><br>
+    <div class = "col-sm-offset-1 col-sm-10 "><br><br>
       <div class="admin-top"><h3>会員一覧</h3></div>
     </div><br>
   </div>
   <div class = "row">
-    <div class = "col-md-offset-2 col-mid-8 ">
+    <div class = "col-sm-offset-2 col-sm-8 ">
       <table class="table table-hover">
 				<thead>
 					<tr>
@@ -25,11 +25,17 @@
 						<%= customer.last_name %> <%=customer.first_name %>
 						<% end %> </td>
 						<td><%= customer.email %></td>
-            <td><%= customer.validness %></td>
+            <td><% if customer.validness == true %>
+								有効
+								<% else %>
+								退会済
+								<% end %> </td>
 					</tr>
           <% end %>
 				</tbody>
 			</table>
     </div>
+		<div class = "col-sm-2"></div>
 		<%= paginate @customers, class: "paginate"%>
-  </div>
+	</div>
+	</div>

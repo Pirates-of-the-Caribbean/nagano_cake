@@ -1,7 +1,13 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-md-offset-1 col-mid-2 "><br><br>
+    <div class = "col-sm-offset-1 col-sm-2 "><br><br>
       <div class="admin-top"><h4>管理者画面</h4></div>
-    </div><br>
+    </div>
+    </div>
 
-          <h2>当日の注文数：<%= link_to @orders.count, admin_todays_order_path %> </h2>
+  <div class = "row">
+    <div class = "col-sm-offset-2 col-sm-3">
+      <h2>当日の注文数：<%= link_to @orders.count, admin_todays_order_path %> </h2>
+    </div>
+  </div>
+</div>

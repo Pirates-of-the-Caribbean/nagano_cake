@@ -1,76 +1,82 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-md-offset-1 col-mid-2 "><br><br>
-      <div class="admin-top"><h3><%= @customer.last_name + " " + @customer.first_name %>さんの会員情報編集</h3></div>
-    </div><br>
+    <div class = "col-sm-offset-1 col-sm-7 "><br><br>
+      <div><h3><%= @customer.last_name + " " + @customer.first_name %>さんの会員情報編集</h3><br><br></div>
+    </div>
+    <div class = "col-sm-4">
+  </div>
   </div>
 
+<div class= "row">
+  <div class = "col-sm-offset-1 col-sm-6">
 <%= form_for(@customer, url:admin_customer_path) do |f| %>
-  <table class="row table">
+  <table class="table1">
     <tr>
-      <th class="col-md-2">顧客ID</th>
-      <td class="col-md-10">
+      <th class="col-sm-2">顧客ID</th>
+      <td class="col-sm-10">
         <%= @customer.id %>
       </td>
     </tr>
 
     <tr>
-      <th class="col-md-2">氏名</th>
-      <td class="col-md-10">
+      <th class="col-sm-2">氏名</th>
+      <td class="col-sm-10">
         <%= f.text_field :last_name %> <%= f.text_field :first_name %>
       </td>
     </tr>
 
     <tr>
-      <th class="col-md-2">フリガナ</th>
-      <td class="col-md-10">
+      <th class="col-sm-2">フリガナ</th>
+      <td class="col-sm-10">
         <%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %>
       </td>
     </tr>
 
     <tr>
-      <th class="col-md-2">郵便番号</th>
-      <td class="col-md-10">
+      <th class="col-sm-2">郵便番号</th>
+      <td class="col-sm-10">
         <%= f.text_field :postcode %>
       </td>
     </tr>
 
     <tr>
-      <th class="col-md-2">住所</th>
-      <td class="col-md-10">
+      <th class="col-sm-2">住所</th>
+      <td class="col-sm-10">
         <%= f.text_field :address %>
       </td>
     </tr>
 
     <tr>
-      <th class="col-md-2">電話番号</th>
-      <td class="col-md-10">
+      <th class="col-sm-2">電話番号</th>
+      <td class="col-sm-10">
         <%= f.telephone_field :telephone_number %>
       </td>
     </tr>
 
     <tr>
-      <th class="col-md-2">メールアドレス</th>
-      <td class="col-md-10">
+      <th class="col-sm-2">メールアドレス</th>
+      <td class="col-sm-10">
         <%= f.email_field :email %>
       </td>
     </tr>
 
     <tr>
-      <th class="col-md-2">会員ステータス</th>
-      <td class="col-md-10">
+      <th class="col-sm-2">会員ステータス</th>
+      <td class="col-sm-10">
       <label><%= f.radio_button :validness, true %> 有効</label>
       <label><%= f.radio_button :validness, false %> 退会済み</label>
       </td>
     </tr>
 
     <tr>
-      <th class="col-md-2">
-      <%= f.submit"変更を保存する"%>
+      <th class="col-sm-2">
+      <%= f.submit '変更を保存する', class:"btn btn-primary" %>
+      <% end %>
       </th>
 
     </tr>
   </table>
+  </div>
 
-  <% end %>
+</div>
 </div>

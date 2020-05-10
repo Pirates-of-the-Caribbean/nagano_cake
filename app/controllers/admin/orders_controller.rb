@@ -1,5 +1,4 @@
-class Admin::OrdersController < ApplicationController
-
+class Admin::OrdersController < Admin::Base
   def index
     @orders = Order.page(params[:page]).reverse_order
   end
