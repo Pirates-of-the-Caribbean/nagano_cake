@@ -26,11 +26,31 @@ class Public::OrdersController < Public::Base
             @order.address = @customer.address
             @order.name = @customer.last_name + @customer.first_name
         elsif @address_select == "登録済住所から選択"
-            @order.address
+            @shippingaddress = ShippingAddress.where(customer_id: current_customer.id)
+            if @shippingaddress.empty?
+                flash[:notice] = '登録済住所が空です'
+                redirect_to new_order_path
+            else
+                @order.address
+            end
         else
-            @order.postcode = params[:new_postcode]
-            @order.address = params[:new_address]
-            @order.name = params[:new_name]
+            @postcode = params[:new_postcode]
+            @address = params[:new_address]
+            @name = params[:new_name]
+            if @postcode.empty?
+                flash[:notice] = '新しいお届け先を入力してください'
+                redirect_to new_order_path
+            elsif @address.empty?
+                flash[:notice] = '新しいお届け先を入力してください'
+                redirect_to new_order_path
+            elsif @name.empty?
+                flash[:notice] = '新しいお届け先を入力してください'
+                redirect_to new_order_path
+            else
+                @order.postcode = params[:new_postcode]
+                @order.address = params[:new_address]
+                @order.name = params[:new_name]
+            end
         end
     end
 
@@ -47,6 +67,15 @@ class Public::OrdersController < Public::Base
             @order_item.save
             cart_item.destroy
         end
+        @address_select = params[:address_select]
+            if @address_select == "新しいお届け先"
+                @shippingaddress = ShippingAddress.new
+                @shippingaddress.customer_id = current_customer.id
+                @shippingaddress.postcode = @order.postcode
+                @shippingaddress.address = @order.address
+                @shippingaddress.name = @order.name
+                @shippingaddress.save
+            end
         redirect_to orders_thanks_path
     end
 
