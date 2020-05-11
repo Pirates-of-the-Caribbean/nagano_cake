@@ -9,6 +9,28 @@
 <body>
 <% content_for :content do %>
   <%= render 'layouts/admin/header' %>
+	<% if flash[:notice] %>
+  	<div class="flash">
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-sm-5">
+  					<%= flash[:notice] %>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+ 	<% end %>
+    <% if flash[:error] %>
+  	<div class="flash">
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-sm-5">
+  					<%= flash[:error] %>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+	<% end %>
   <%= yield %>
 <% end %>
 <%= render template: "layouts/application" %>
