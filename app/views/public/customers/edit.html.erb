@@ -1,43 +1,52 @@
-<div class="customer-edit">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-2">
-				<h3><span class="label label-default">登録情報編集</span></h3>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-8">
-				<%= form_for(current_customer) do |f| %>
-				<table>
-					<tr>
-						<td>名前</td>
-						<td>(姓)<%= f.text_field :last_name %>(名)<%= f.text_field :first_name %></td>
-					</tr>
-					<tr>
-						<td>フリガナ</td>
-						<td>(セイ)<%= f.text_field :last_name_kana %>(メイ)<%= f.text_field :first_name_kana %></td>
-					</tr>
-					<tr>
-						<td>メールアドレス</td>
-						<td><%= f.email_field :email %></td>
-					</tr>
-					<tr>
-						<td>郵便番号(ハイフンなし)</td>
-						<td><%= f.text_field :postcode %></td>
-					</tr>
-					<tr>
-						<td>住所</td>
-						<td><%= f.text_field :address %></td>
-					</tr>
-					<tr>
-						<td>電話番号(ハイフンなし)</td>
-						<td><%= f.telephone_field :telephone_number %></td>
-					</tr>
-				</table>
-				<%= f.submit "編集内容を保存する", class: "btn btn-primary" %>
-				<%= link_to "退会する", customers_withdraw_path, class: "btn btn-danger" %>
-				<% end %>
-			</div>
+<div class="main">
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-1 col-sm-2">
+			<h3><span class="label label-default">登録情報編集</span></h3>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-sm-8">
+			<%= form_for(current_customer) do |f| %>
+			<% if current_customer.errors.any? %>
+			  <div id="error_explanation" class="alert alert-danger">
+			    <ul>
+			      <% current_customer.errors.full_messages.each do |message| %>
+			        <li><%= message %></li>
+			      <% end %>
+			    </ul>
+			  </div>
+			<% end %>
+			<table class="table" id="edit_table">
+				<tr>
+					<th class="col-sm-4">名前</th>
+					<td class="col-sm-8">(姓)　<%= f.text_field :last_name %>(名)　<%= f.text_field :first_name %></td>
+				</tr>
+				<tr>
+					<th>フリガナ</th>
+					<td>(セイ)<%= f.text_field :last_name_kana %>(メイ)<%= f.text_field :first_name_kana %></td>
+				</tr>
+				<tr>
+					<th>メールアドレス</th>
+					<td><%= f.email_field :email %></td>
+				</tr>
+				<tr>
+					<th>郵便番号(ハイフンなし)</th>
+					<td><%= f.text_field :postcode %></td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td><%= f.text_field :address, size: "60" %></td>
+				</tr>
+				<tr>
+					<th>電話番号(ハイフンなし)</th>
+					<td><%= f.telephone_field :telephone_number %></td>
+				</tr>
+			</table>
+			<%= f.submit "編集内容を保存する", class: "btn btn-primary col-sm-offset-2 col-sm-4" %>
+			<%= link_to "退会する", customers_withdraw_path, class: "btn btn-danger col-sm-offset-3 col-sm-3" %>
+			<% end %>
+		</div>
+	</div>
+</div>
 </div>

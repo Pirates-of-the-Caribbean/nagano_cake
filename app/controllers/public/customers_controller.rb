@@ -1,5 +1,5 @@
 class Public::CustomersController < Public::Base
-	before_action :correct_customer, only: [:withdraw, :show, :edit]
+	before_action :correct_customer, only: [ :show, :edit]
 	# 退会ページの編集
 	def withdraw
 	end
