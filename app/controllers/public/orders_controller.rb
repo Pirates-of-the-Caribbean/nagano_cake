@@ -28,7 +28,7 @@ class Public::OrdersController < Public::Base
         elsif @address_select == "登録済住所から選択"
             @shippingaddress = ShippingAddress.where(customer_id: current_customer.id)
             if @shippingaddress.empty?
-                flash[:notice] = '登録済住所が空です'
+                flash[:notice] = '配送先を登録してください'
                 redirect_to new_order_path
             else
                 @order.address
