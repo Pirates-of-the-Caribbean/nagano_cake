@@ -1,10 +1,10 @@
 class Admin::OrdersController < Admin::Base
   def index
-    @orders = Order.page(params[:page]).reverse_order
+    @orders = Order.page(params[:page]).reverse_order.per(10)
   end
 
   def todays_order
-    @orders = Order.created_today.page(params[:page]).reverse_order
+    @orders = Order.created_today.page(params[:page]).reverse_order.per(10)
   end
 
   def customers_order

@@ -3,9 +3,9 @@ class Public::ItemsController <  Public::Base
 	def index
 		@genres = Genre.all
 		if params[:genre_id]
-		@items=Item.where(genre_id: params[:genre_id])
+		@items=Item.where(genre_id: params[:genre_id]).page(params[:page]).reverse_order.per(9)
 		else
-		@items = Item.page(params[:page]).reverse_order
+		@items = Item.page(params[:page]).reverse_order.per(9)
 	end
 	end
 
