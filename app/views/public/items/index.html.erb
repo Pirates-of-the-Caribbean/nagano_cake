@@ -1,30 +1,33 @@
- <h2>商品一覧</h2>
+<br><br><br>
+<div class = "container">
+	<div class = "row">
+		<div class ="col-sm-2">
+			<div class = "genre_search">
+				<h4>ジャンル検索</h4>
+			</div>
+			<div class = "genre">
+				<br>
+				<% @genres.each do |genre| %>
+					<% if genre.valid_flag =="有効" %>
+						<%= link_to genre.name, items_path(genre_id: genre.id) %><br><br>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
 
- <div class ="col-sm-2">
- 	<div class = "genre_search">
- 		<h4>ジャンル検索</h4>
- 	</div>
- 	<div class = "genre">
- 		<br>
-
- 		<% @genres.each do |genre| %>
- 		<% if genre.valid_flag =="有効" %>
- 		<%= link_to genre.name, items_path(genre_id: genre.id) %><br>
- 		<% end %>
- 		<% end %>
- 	</div>
- </div>
-
- <% @items.each do |item| %>
- <% if item.sale_status =="販売中" %>
- <tr>
- 	<td>
- 		<%= link_to "詳細" ,item_path(item.id) %>
- 		<%= attachment_image_tag item, :image, :size => '200x140', fallback: 'no_image.jpg' %>
- 		<%= item.name %>
- 		<td><%= item.price %></td>
- 	</tr>
- </tbody>
-
- <% end %>
- <% end %>
+		<div class = "col-sm-offset-1 col-sm-9">
+		<h2>商品一覧</h2><br>
+			<% @items.each do |item| %>
+				<% if item.sale_status =="販売中" %>
+					<div class = "col-sm-4">
+					<%= link_to item_path(item.id) do %>
+					<%= attachment_image_tag item, :image, :size => '200x140', fallback: 'no_image.jpg' %><br>
+					<%= item.name %><% end %><br>
+					<%= item.price %>円<br><br>
+					</div>
+				<% end %>
+			<% end %>
+				<%= paginate @items, class: "paginate"%>
+		</div>
+	</div>
+</div>
