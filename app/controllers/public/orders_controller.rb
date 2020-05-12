@@ -1,7 +1,7 @@
 class Public::OrdersController < Public::Base
     before_action :correct_customer, only: [ :show]
     def index
-        @orders = Order.all
+        @orders = Order.page(params[:page]).reverse_order.per(10)
     end
 
     def new
