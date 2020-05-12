@@ -15,8 +15,10 @@
     <% end %>
   </div>
 </div>
-<div class="col-sm-4">
-<%= attachment_image_tag @item, :image, :fill, 400, 400, fallback: 'no_image.jpg' %>
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-3">
+
+<%= attachment_image_tag @item, :image, :size => '200x150', fallback: 'no_image.jpg' %>
 </div>
 <div class="col-sm-5">
  <!-- <table class="table_item "> -->
@@ -30,7 +32,7 @@
       </div></h3>
        <%= form_for(@cart_item ,url:cart_items_path) do |f| %>
 <%= f.hidden_field :item_id, :value => @item.id %>
-<%= f.select :quantity, options_for_select((1..10)), include_blank: "選択して下さい" ,class: "btn btn-info" %>
+<%= f.select :quantity, options_for_select((1..10)), include_blank: "選択して下さい" ,class: "btn btn-info" %>　　　
 <%= f.submit "カートに入れる", class: "btn btn-primary"  %>
 
 
