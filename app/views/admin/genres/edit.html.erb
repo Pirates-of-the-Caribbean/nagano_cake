@@ -1,10 +1,17 @@
-<h2>ジャンル編集</h2>
+<div class="container">
+    <div class="row">
+
+<div class ="col-sm-12">
+<h2>ジャンル編集</h2><br><br><br>
 
 <%= form_for(@genre,url:admin_genre_path) do |f| %>
-  <%= f.text_field :name %>
-  <%= f.label :valid_flag, :有効%>
+  
   <%= f.radio_button :valid_flag, "有効" %>
-  <%= f.label :valid_flag, :無効%>
+  <%= f.label :valid_flag, :有効%>
   <%= f.radio_button :valid_flag, "無効" %>
-  <%= f.submit "変更を保存する" %>
+  <%= f.label :valid_flag, :無効%>
+  <%= f.text_field :name %>
+  <%= f.submit "変更を保存する",class:"btn btn-primary" %>
 <% end %>
+</div>
+

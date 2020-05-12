@@ -1,6 +1,18 @@
-<h1>商品登録</h1>
-<%= form_for(@item,url:admin_items_path) do |f| %>
 
+<div class="main">
+<div class="container">
+		<div class="row">
+
+
+<div class="col-sm-offset-1">
+	<h1>商品登録</h1><br><br><br>
+</div>
+</div>
+<%= form_for(@item,url:admin_items_path) do |f| %>
+<div class="row">
+<div class="col-sm-4">
+商品画像<br>
+<%= f.attachment_field :image %><br>
 <% if @item.errors.any? %>
         <div><%= @item.errors.count %>件のerrorが発生しました</div>
         <ul><% @item.errors.full_messages.each do |message| %>
@@ -8,21 +20,48 @@
         <% end %>
    		 </ul>
     <% end %>
+</div>
 
 
 
-商品名<br>
-<%= f.text_field :name %><br>
-商品説明<br>
-<%= f.text_area :detail %><br>
-税抜価格<br>
-<%= f.text_field :price %><br>
-ジャンル<br>
-<%= f.collection_select(:genre_id, Genre.all, :id, :name) %><br>
-販売ステータス<br>
-<%= f.select :sale_status, [["販売中","販売中"], [ "販売停止中", "販売停止中"]], include_blank: "選択して下さい" %>
-<br>
-商品画像<br>
-<%= f.attachment_field :image %><br>
-<%= f.submit '新規登録' %>
+<div class="col-sm-8">
+<table class="table_item">
+
+<tr>
+	<th>商品名</th>
+	<td><%= f.text_field :name %></td>
+</tr>
+
+<tr>
+	<th>商品説明</th>
+	<td><%= f.text_area :detail,size: "20x5" %></td>
+</tr>
+
+<tr>
+	<th>ジャンル</th>
+	<td><%= f.collection_select(:genre_id, Genre.all, :id, :name) %></td>
+</tr>
+
+
+<tr>
+	<th>税抜価格</th>
+	<td><%= f.text_field :price %></td>
+</tr>
+
+
+<tr>
+	<th>販売ステータス</th>
+	<td><%= f.select :sale_status, [["販売中","販売中"], [ "販売停止中", "販売停止中"]], include_blank: "選択して下さい" %></td>
+</tr>
+</table>
+</div>
+<div class="item_button">
+
+	<h3><%= f.submit '新規登録',class:"btn btn-primary" %></h3>
+
+
+
   <% end %>
+</div>
+</div>
+</div>

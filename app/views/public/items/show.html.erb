@@ -1,35 +1,54 @@
 
+<div class="container">
+ <div class="row">
 <h2>商品詳細</h2>
 
 
-  <div class ="col-sm-2">
+<div class ="col-sm-2">
   <div class = "genre_search">
     <h4>ジャンル検索</h4>
   </div>
-  <div class = "genre">
-    <br>
-
+  <div class = "genre"><br>
     <% @genres.each do |genre| %>
-   
-    <%= link_to genre.name, items_path(genre_id: genre.id) %>   <br><br>
+
+    <%= link_to genre.name, items_path(genre_id: genre.id) %><br><br>
     <% end %>
-
-
   </div>
- </div>
+</div>
+<div class="col-sm-4">
+<%= attachment_image_tag @item, :image, :fill, 400, 400, fallback: 'no_image.jpg' %>
+</div>
+<div class="col-sm-5">
+ <!-- <table class="table_item "> -->
+      <!-- <tr> -->
+        <h2><b><%= @item.name %></b></h2><br>
 
-
- 
-<%= attachment_image_tag @item, :image, :fill, 40, 40, fallback: 'no_image.jpg' %>
-<%= @item.name %>
-<%= @item.price %>
-
-
-<%= form_for(@cart_item ,url:cart_items_path) do |f| %>
+        <%= @item.detail %>
+     <h3><div class="item_price">
+        ¥<%= @item.price %>(税込)
+      
+      </div></h3>
+       <%= form_for(@cart_item ,url:cart_items_path) do |f| %>
 <%= f.hidden_field :item_id, :value => @item.id %>
-<%= f.select :quantity, options_for_select((1..10)), include_blank: "選択して下さい" %>
-<%= f.submit "カートに入れる" %>
-<% end %>
+<%= f.select :quantity, options_for_select((1..10)), include_blank: "選択して下さい" ,class: "btn btn-info" %>
+<%= f.submit "カートに入れる", class: "btn btn-primary"  %>
 
-<!-- (@user,@cart_item.id) -->
-<!-- (genre_name: genre.name) -->
+
+<% end %>
+    </div>
+  
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

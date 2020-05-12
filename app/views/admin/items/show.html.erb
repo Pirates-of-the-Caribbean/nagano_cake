@@ -1,13 +1,50 @@
-<h2>商品詳細</h2>
+<div class="container">
+	<div class="row">
 
 
-				<%= @item.name %>
+		<h2>商品詳細</h2>
+		<div class ="col-sm-4">
 
-				<%= @item.price %>
+			<%= attachment_image_tag @item, :image, :fill, 400, 400, fallback: 'no_image.jpg' %>
+		</div>
 
-				<%= @item.detail %>
+		<div class ="col-sm-8">
+			<table class="table_item table">
+				<tr>
+					<th class="col-sm-3">商品名</th>
+					<td class="col-sm-9"><%= @item.name %></td>
+				</tr>
+				<tr>
+						<th>商品説明</th>
+						<td><%= @item.detail %></td>
+					</tr>
+				<tr>
+					<th>税込価格(税抜価格)</th>
+					<td><%= (@item.price*1.1).floor %>
+						(<%= @item.price %>)</td>
+					</tr>
+					
+					<tr>
+						<th>ジャンル</th>
+						<td><%= @item.genre.name %></td>
+					</tr>
+					<tr>
+						<th>販売ステータス</th>
+						<td><%= @item.sale_status %></td>
+					</tr>
+				</table>
+			</div>
 
-				<%= attachment_image_tag @item, :image, :fill, 40, 40, fallback: 'no_image.jpg' %>
+		</div>
+		<div class="row">
+			<div class="item_button">
+				<div class ="col-sm-10">
+					<tr>
+						<th><%= link_to "編集", edit_admin_item_path(@item),class:"btn btn-primary" %></th>
+					</tr>
 
+				</div>
 
-　　　　　　　　　　<%= link_to "編集", edit_admin_item_path(@item) %>
+			</div>
+		</div>
+	</div>

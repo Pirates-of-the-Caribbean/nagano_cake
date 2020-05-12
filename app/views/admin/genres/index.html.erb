@@ -9,12 +9,12 @@
     <% end %>
 
 <%= form_for(@genre,url:admin_genres_path) do |f| %>
-  <%= f.text_field :name %>
-  <%= f.label :valid_flag, :有効%>
   <%= f.radio_button :valid_flag, "有効" %>
-  <%= f.label :valid_flag, :無効%>
+  <%= f.label :valid_flag, :有効%>
   <%= f.radio_button :valid_flag, "無効" %>
-  <%= f.submit "追加" %>
+  <%= f.label :valid_flag, :無効%>
+  <%= f.text_field :name %>
+  <%= f.submit "追加",class:"btn btn-primary"  %>
 <% end %>
 
 
@@ -32,7 +32,8 @@
 			<tr>
 				<td><%= genre.name %></td>
 				<td><%= genre.valid_flag  %></td>
-				<td><%= link_to "編集する" ,edit_admin_genre_path(genre.id) %></td>
+				<td><%= link_to "編集する" ,edit_admin_genre_path(genre.id) ,class:"btn btn-primary" %></td>
 			</tr>
 	</tbody>
 	<% end %>
+</table>
