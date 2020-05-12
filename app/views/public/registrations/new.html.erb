@@ -4,11 +4,13 @@
       <br><h3>会員新規登録</h3><br><br>
     </div>
 
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <%= render "public/shared/error_messages", resource: resource %>
     <div class = "row">
       <div class = "col-sm-offset-3 col-sm-6">
         <table class ="table-no-border">
-                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                  <%= render "public/shared/error_messages", resource: resource %>
+
 
                   <div class="field">
                     <tr>

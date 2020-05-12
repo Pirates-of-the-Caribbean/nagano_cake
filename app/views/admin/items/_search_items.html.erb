@@ -1,0 +1,34 @@
+<div class="container">
+ <div class="row">
+<table class="table table-hover">
+	<thead>
+			<tr>
+				<th>商品ID</th>
+				<th>商品名</th>
+				<th>税抜価格</th>
+				<th>ジャンル</th>
+				<th>販売ステータス</th>
+			</tr>
+	</thead>
+	<tbody>
+				<% items.each do |item| %>
+			<tr>
+				<td><%= item.id %></td>
+				<td>
+					<%= link_to admin_item_path(item.id) do %>
+					<%= item.name %>
+					<% end %>
+				</td>
+				<td><%= item.price %></td>
+				<td><%= item.genre.name %></td>
+				<td><%= item.sale_status %></td>
+			</tr>
+	</tbody>
+
+	<% end %>
+
+	 </div>
+	  </div>
+
+</table>
+<%= paginate items, class: "paginate" %>
