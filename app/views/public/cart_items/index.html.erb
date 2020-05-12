@@ -51,6 +51,14 @@
         <th class="active col-sm-2">合計金額</th>
         <td class="col-sm-1"><%= @sum_price %></td>
     </tr>
+    <tr>
+        <th class="active">送料</th>
+        <td>800</td>
+    </tr>
+    <tr>
+        <th class="active">請求金額</th>
+        <td><%= @sum_price + 800 %></td>
+    </tr>
 </table>
 </div>
 <%= link_to '買い物を続ける', root_path, data: {"turbolinks" => false}, class: "btn btn-primary" %><br>
