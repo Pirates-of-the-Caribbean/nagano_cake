@@ -1,0 +1,14 @@
+<div class = "container">
+	<div class = "row">
+
+		<div class = "col-sm-9">
+
+<% if @model == 'customer' %>
+  <h3>顧客情報検索結果</h3>
+  <%= render 'admin/customers/search_customers', customers: @records %>
+
+  <% else %>
+  <h3>商品情報検索結果</h3>
+  <%= render 'admin/items/search_items', items: @records %>
+
+  <% end %>

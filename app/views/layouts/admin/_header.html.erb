@@ -71,16 +71,21 @@
 				</div>
 
 				<div class="collapse navbar-collapse navbar-right" id="navbarEexample4">
-					<form class="navbar-form" role="search">
+					<div class="navbar-form" role="search">
 						<div class="input-group">
-			                <%= text_field_tag :search, params[:search], placeholder: "キーワード検索", class: "form-control" %>
-			                <span class="input-group-btn">
-			                    <%= button_tag "検索",:name => nil, class: "btn btn-default " %>
-			                    <!-- glyphicon glyphicon-search -->
-			                </span>
+						<%# 検索フォーム %>
+							<%= form_tag(admin_search_path, method: :get) do %>
+								<%= select_tag 'search[model]', options_for_select({ "顧客名検索" => "customer", "商品名検索" => "item"}) %>　
+								<%= text_field_tag 'search[content]'%>　
+								<span class="input-group-btn">
+								<%= submit_tag "検索", class: "btn btn-default " %>
+								</span>
+							<% end %>
+							<!-- 検索フォームここまで -->
 						</div>
-					</form>
+					</div>
 				</div>
+				
 			<% else %>
 				<div class="collapse navbar-collapse navbar-right" id="navbarEexample4">
 					<%= link_to "ログイン", new_admin_session_path, class: "btn btn-default navbar-btn" %>
