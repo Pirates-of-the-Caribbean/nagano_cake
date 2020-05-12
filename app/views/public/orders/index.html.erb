@@ -1,17 +1,17 @@
 <div class="order-index">
 	<div class="container">
 		<div class="row">
-			<h3><span class="label label-default">注文履歴一覧</span></h3>
+			<br><br><br><div class = "col-sm-offset-1 headline">注文履歴一覧</div>
 		</div>
 		<div class="row">
-			<table class="table">
+			<br><table class="table">
 				<tr>
 					<th>注文日</th>
 					<th>配送先</th>
 					<th>注文商品</th>
 					<th>支払金額</th>
 					<th>ステータス</th>
-					<th></th>
+					<th>注文詳細</th>
 				</tr>
 				<% @orders.each do |order| %>
 				<% if order.customer_id == current_customer.id %>

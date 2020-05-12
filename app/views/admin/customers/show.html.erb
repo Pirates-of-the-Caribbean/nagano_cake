@@ -1,13 +1,14 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-offset-1 col-md-10 "><br><br>
-      <div><h3><%= @customer.last_name + " " + @customer.first_name %>さんの会員情報</h3></div>
-    </div><br>
+<br><br><br><div class = "col-sm-offset-1 headline"><%= @customer.last_name + " " + @customer.first_name %>さんの会員情報</div>
+    <br>
   </div>
 
-<div class= "row">
-<div class = "col-sm-5">
-  <table class="row table">
+
+
+<BR><BR><div class= "row">
+<div class = "col-sm-offset-1 col-sm-7">
+  <table class="table1">
     <tr>
       <th class="col-sm-3">顧客ID</th>
       <td class="col-sm-10">
@@ -16,7 +17,7 @@
 
           <span class="label label-primary">有効</span>
         <% else %>
-        
+
           <span class="label label-danger">退会済</span>
         <% end %>
       </td>
@@ -67,7 +68,7 @@
     </div>
 
     <div class = "row">
-      <div class="col-sm-4">
+      <div class="col-sm-offset-1 col-sm-4">
       <h4><%= link_to edit_admin_customer_path(@customer) do %><span class="label label-primary">編集する</span><% end %>　
       <%= link_to admin_path(@customer) do %><span class="label label-primary">注文履歴一覧を見る</span><% end %>
       </div></h4>

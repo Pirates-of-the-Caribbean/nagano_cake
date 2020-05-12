@@ -1,14 +1,13 @@
 <div class="main">
 <div class="container">
 	<div class="row">
-		<div class="col-sm-offset-1 col-sm-1">
-			<h3><span class="label label-default">マイページ</span></h3>
-		</div>
+		<div class="col-sm-offset-1 col-sm-5">
+			<br><br><br><div class = "headline">マイページ</div></div>
 	</div>
 
 	<div class="row">
 		<div class="col-sm-8">
-			<h4>登録情報
+			<br><h4><b>登録情報　</b>
 				<%= link_to "編集する", edit_customer_path(current_customer.id), class: "btn btn-primary" %>
 				<%= link_to "パスワードを変更する", edit_customer_password_path, class: "btn btn-primary" %>
 			</h4>

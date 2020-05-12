@@ -1,7 +1,7 @@
 <div class="main">
 <div class="container">
 	<div class="row">
-    <h3><span class="label label-default">注文情報入力</span></h3>
+    <br><br><br><div class = "col-sm-offset-1 headline">注文情報入力</div>
 <%= form_for(@order, url:orders_confirm_path) do |f| %>
     <div class="order_content">
         <h4>支払方法</h4>
@@ -20,7 +20,7 @@
             <label><%= radio_button_tag 'address_select', :登録済住所から選択 %><label class="order_choice">登録済住所から選択</label></label><br>
                 <%= f.collection_select(:address, @registered_addresses, :full_shipping_address, :full_shipping_address) %>
             </div>
-            <div class="order_select">  
+            <div class="order_select">
             <label><%= radio_button_tag 'address_select', :新しいお届け先 %><label class="order_choice">新しいお届け先</label></label><br>
                 <table class="table-noborder col-sm-8">
                     <tr>
@@ -36,13 +36,13 @@
                         <td><%= text_field_tag 'new_name','',size:50 %></td>
                     </tr>
                 </table>
-            </div>            
+            </div>
     </div>
     <div class="btn_space">
     </div>
     <div class="success_btn">
     <%= f.submit '確認画面へ進む', class: "btn btn-primary", id:"cart_success_btn" %>
-    </div>    
+    </div>
         <% end %>
 <% end %>
 </div>

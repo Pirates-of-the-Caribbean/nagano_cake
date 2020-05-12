@@ -1,11 +1,11 @@
 <div class="main">
 <div class="container">
 	<div class="row">
-    <h3><span class="label label-default">注文情報確認</span></h3>
+    <br><br><br> <div class = "col-sm-offset-1 headline">注文情報確認</div>
 <%= form_for(@order, url:orders_path) do |f| %>
 <div class="confirm_content">
 <div class="col-sm-8">
-<table class="table table-bordered">
+<br><table class="table table-bordered">
 <thead>
     <tr class="active">
         <th>商品名</th>
@@ -39,7 +39,7 @@
 </tbody>
 </table>
 </div>
-<div class="col-sm-4">
+<br><div class="col-sm-4">
 <table class="table table-bordered">
     <tr>
         <th class="active">送料</th>
@@ -57,7 +57,7 @@
 </table>
 </div>
 </div>
-<h4>支払方法</h4><%= @order.payment_method %>
+<br><h4>支払方法</h4><%= @order.payment_method %>
 <h4>お届け先</h4>
     <%= hidden_field_tag :address_select, @address_select %>
     <%= @order.postcode %>
@@ -69,8 +69,8 @@
 <%= f.hidden_field :address, value:@order.address %>
 <%= f.hidden_field :name, value:@order.name %>
 <%= f.hidden_field :total_price, value:@order.total_price %>
-<div class="success_btn">    
-    <%= f.submit '購入を確定する', class: "btn btn-success", id:"cart_success_btn" %>
+<div class="success_btn">
+    <br><%= f.submit '購入を確定する', class: "btn btn-success", id:"cart_success_btn" %>
 </div>
 <% end %>
 </div>

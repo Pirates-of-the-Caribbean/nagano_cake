@@ -1,12 +1,14 @@
-<h2>ジャンル一覧・追加</h2>
-
-<% if @genre.errors.any? %>
+<div class ="container">
+	<div class ="row">
+<br><br><br><div class = "col-sm-offset-1 headline">ジャンル一覧/追加</div></div>
+<br><% if @genre.errors.any? %>
         <div><%= @genre.errors.count %>件のerrorが発生しました</div>
         <ul><% @genre.errors.full_messages.each do |message| %>
             <li><%= message %></li>
         <% end %>
    		 </ul>
     <% end %>
+
 
 <%= form_for(@genre,url:admin_genres_path) do |f| %>
   <%= f.radio_button :valid_flag, "有効" %>
@@ -17,9 +19,9 @@
   <%= f.submit "追加",class:"btn btn-primary"  %>
 <% end %>
 
-
-
-<table class="table table-striped">
+<div class ="row">
+<br><div class = "col-sm-5">
+<table class="table table-hover">
 	<thead>
 			<tr>
 				<th>ジャンル</th>
@@ -37,3 +39,7 @@
 	</tbody>
 	<% end %>
 </table>
+</div>
+</div>
+
+</div></div>

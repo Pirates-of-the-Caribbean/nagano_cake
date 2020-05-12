@@ -1,9 +1,0 @@
-<%# 検索フォーム %>
-  <%= form_tag(admin_search_path, method: :get) do %>
-    <%= select_tag 'search[model]', options_for_select({ "顧客名検索" => "customer", "商品名検索" => "item"}) %>　
-    <%= text_field_tag 'search[content]'%>　
-    <span class="input-group-btn">
-    <%= submit_tag "検索", class: "btn btn-default " %>
-    </span>
-  <% end %>
-							<!-- 検索フォームここまで -->

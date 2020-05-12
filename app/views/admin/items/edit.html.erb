@@ -1,27 +1,19 @@
-
 <%= form_for(@item, url:admin_item_path) do |f| %>
-
 <div class="container">
-
     <div class="row">
+<br><br><br><div class = "col-sm-offset-1 headline">商品編集</div>
+</div>
 
-
-<div class ="col-sm-5">
-<h2>商品編集</h2><br><br><br>
-
-
-    <h4>商品画像</h4>
-    <%= attachment_image_tag @item, :image, :fill, 400, 400, fallback: 'no_image.jpg' %>
-   
-
-    
+<div class ="row">
+<BR><BR><div class ="col-sm-offset-2 col-sm-3">
+    <%= attachment_image_tag @item, :image, :size => '200x150', fallback: 'no_image.jpg' %>
     <%= f.attachment_field :image %>
     </div>
-    <div class ="col-sm-7">
+    <div class ="col-sm-offset-1 col-sm-6">
     <table class="table_item">
 
 <tr>
-    <th>商品名</th><br><br><br><br><br><br><br>
+    <th>商品名</th>
     <td><%= f.text_field :name %></td>
 </tr>
 
@@ -59,8 +51,3 @@
 </div>
 </div>
 </div>
-
-
-
-
-
