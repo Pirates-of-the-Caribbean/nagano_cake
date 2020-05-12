@@ -16,13 +16,58 @@
 
 				<% if customer_signed_in? %>
 				<p class="navbar-text">ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！</p>
+ 				<div class="dropdown">
+					<button class="btn btn-defult navbar-btn dropdown-toggle" data-toggle="dropdown">マイページ</button>
+					<ul class="dropdown-menu" role="menu">
+						<li role="presentation"><%= link_to "マイページ", customer_path(current_customer) %></li>
+						<li role="presentation"><%= link_to "配送先一覧", shipping_addresses_path %></li>
+						<li role="presentation"><%= link_to "注文履歴一覧", orders_path %></li>
+					</ul>
+				</div>
+				<div class="dropdown">
+					<button class="btn btn-defult navbar-btn dropdown-toggle" data-toggle="dropdown">商品一覧</button>
+					<ul class="dropdown-menu" role="menu">
+						<li role="presentation"><%= link_to "全商品一覧", items_path %></li>
+						<% Genre.all.each do |genre| %>
+						<% if genre.valid_flag == "有効" %>
+						<li role="presentation"><%= link_to genre.name, items_path(genre_id: genre.id) %></li>
+						<% end %>
+						<% end %>
+					</ul>
+				</div>
+				<div class="dropdown">
+					<button class="btn btn-defult navbar-btn dropdown-toggle" data-toggle="dropdown">カート</button>
+					<ul class="dropdown-menu" role="menu">
+						<li role="presentation"><%= link_to "マイカート", cart_items_path %></li>
+					</ul>
+				</div>
+				<div class="dropdown">
+					<button class="btn btn-defult navbar-btn dropdown-toggle" data-toggle="dropdown">ログアウト</button>
+					<ul class="dropdown-menu" role="menu">
+						<li role="presentation"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+					</ul>
+				</div>
+<!-- ドロップダウンを使わないパターン<div>ははずす -->
+				<!-- <div>
 				<%= link_to "マイページ", customer_path(current_customer), class: "btn btn-default navbar-btn" %>
 				<%= link_to "商品一覧", items_path, class: "btn btn-default navbar-btn" %>
 				<%= link_to "カート", cart_items_path, class: "btn btn-default navbar-btn" %>
 				<%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: "btn btn-default navbar-btn" %>
-				
+				</div> -->
 				<% else %>
-				<%= link_to "商品一覧", items_path, class: "btn btn-default navbar-btn" %>
+				<div class="dropdown">
+					<button class="btn btn-defult navbar-btn dropdown-toggle" data-toggle="dropdown">商品一覧</button>
+					<ul class="dropdown-menu" role="menu">
+						<li role="presentation"><%= link_to "全商品一覧", items_path %></li>
+						<% Genre.all.each do |genre| %>
+						<% if genre.valid_flag == "有効" %>
+						<li role="presentation"><%= link_to genre.name, items_path(genre_id: genre.id) %></li>
+						<% end %>
+						<% end %>
+					</ul>
+				</div>
+<!-- ドロップダウンを使わないパターン<div>ははずす -->
+				<!-- <div><%= link_to "商品一覧", items_path, class: "btn btn-default navbar-btn" %></div> -->
 				<%= link_to "新規登録", new_customer_registration_path, class: "btn btn-default navbar-btn" %>
 				<%= link_to "ログイン", new_customer_session_path, class: "btn btn-default navbar-btn" %>
 

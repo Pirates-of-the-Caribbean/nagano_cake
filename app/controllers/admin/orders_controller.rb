@@ -1,6 +1,10 @@
 class Admin::OrdersController < Admin::Base
   def index
-    @orders = Order.page(params[:page]).reverse_order.per(10)
+    if params[:status]
+      @orders = Order.where(status: params[:status]).page(params[:page]).reverse_order.per(10)
+    else
+      @orders = Order.page(params[:page]).reverse_order.per(10)
+    end
   end
 
   def todays_order
