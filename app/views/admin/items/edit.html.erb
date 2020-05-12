@@ -1,17 +1,66 @@
-<h2>商品編集</h2>
 
-    <%= form_for(@item, url:admin_item_path) do |f| %>
-    <h4>商品名</h4>
-    <%= f.text_field :name %>
-    <h4>商品説明</h4>
-   <%= f.text_area :detail %>
-    <h4>税抜価格</h4>
-    <%= f.number_field :price %>
-    <h4>販売ステータス</h4><br>
-    <%= f.select :sale_status, [["販売中","販売中"], [ "販売停止中", "販売停止中"]], include_blank: "選択して下さい" %>
+<%= form_for(@item, url:admin_item_path) do |f| %>
+
+<div class="container">
+
+    <div class="row">
+
+
+<div class ="col-sm-5">
+<h2>商品編集</h2><br><br><br>
+
+
     <h4>商品画像</h4>
-    <%= attachment_image_tag @item, :image, :fill, 40, 40, fallback: 'no_image.jpg' %>
-    <%= f.attachment_field :image %>
+    <%= attachment_image_tag @item, :image, :fill, 400, 400, fallback: 'no_image.jpg' %>
+   
 
-    <%= f.submit '変更を保存' %>
+    
+    <%= f.attachment_field :image %>
+    </div>
+    <div class ="col-sm-7">
+    <table class="table_item">
+
+<tr>
+    <th>商品名</th><br><br><br><br><br><br><br><br><br><br>
+    <td><%= f.text_field :name %></td>
+</tr>
+
+<tr>
+    <th>商品説明</th>
+    <td><%= f.text_area :detail,size: "20x5" %></td>
+</tr>
+
+<tr>
+    <th>ジャンル</th>
+    <td><%= f.collection_select(:genre_id, Genre.all, :id, :name) %></td>
+</tr>
+
+
+<tr>
+    <th>税抜価格</th>
+    <td><%= f.text_field :price %>円</td>
+</tr>
+
+
+<tr>
+    <th>販売ステータス</th>
+    <td><%= f.select :sale_status, [["販売中","販売中"], [ "販売停止中", "販売停止中"]], include_blank: "選択して下さい" %></td>
+</tr>
+</table>
+</div>
+</div>
+<div class="row">
+                        <div class="item_button">
+                        <div class ="col-sm-10">
+    <tr>
+   <th><h3><%= f.submit '変更を保存',class:"btn btn-primary" %></h3></th>
+    </tr>
 <% end %>
+</div>
+</div>
+</div>
+
+
+
+
+

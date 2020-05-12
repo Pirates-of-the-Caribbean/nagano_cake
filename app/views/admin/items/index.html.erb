@@ -1,5 +1,10 @@
+<div class="container">
+ <div class="row">
 	<h2>商品一覧</h2>
-<%= link_to "登録" , new_admin_item_path %>
+
+<p class="text-right">
+<%= link_to "" , new_admin_item_path,class:"glyphicon glyphicon-plus-sign", style:"font-size: 50px"%></p>
+
 <table class="table table-striped">
 	<thead>
 			<tr>
@@ -26,5 +31,9 @@
 	</tbody>
 
 	<% end %>
-	<%= paginate @items, class: "paginate" %>
+	
+	 </div>
+	  </div>
+	
 </table>
+<%= paginate @items, class: "paginate" %>
