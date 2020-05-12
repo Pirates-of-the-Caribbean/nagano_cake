@@ -1,7 +1,11 @@
 class Admin::GenresController < Admin::Base
 	def index
-	@genres=Genre.all
-	@genre=Genre.new
+		@genre=Genre.new
+		if params[:valid_flag]
+			@genres = Genre.where(valid_flag: params[:valid_flag])
+		else
+			@genres=Genre.all
+		end
 	end
 
 	def create

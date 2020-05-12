@@ -1,7 +1,11 @@
 class Admin::ItemsController <Admin::Base
 
 def index
-	@items=Item.page(params[:page]).reverse_order.per(10)
+	if params[:genre_id]
+		@items = Item.where(genre_id: params[:genre_id]).page(params[:page]).reverse_order.per(10)
+	else
+		@items=Item.page(params[:page]).reverse_order.per(10)
+	end
 end
 
 def new

@@ -34,11 +34,30 @@ header .navbar-header{
 	width: 80px;
 }
 
+.dropdown {
+	display: inline-block;
+}
+
+.dropdown:hover > .dropdown-menu{
+	display: block;
+	margin: 0;
+}
+
 header .btn{
 	margin: 0 10px 0 auto;
+	border: ridge 1px black;
+	background-color: white;
 }
 
 .table-no-border td{
   border: none!important;
   padding: 6px;
 }
+
+.footer{
+	margin-top: 10px;
+	height: 50px;
+	border: ridge 1px black;
+	text-align: right;
+}
+

@@ -1,7 +1,11 @@
 class Admin::CustomersController < Admin::Base
 
   def index
-    @customers = Customer.all.page(params[:page])
+    if params[:validness]
+      @customers = Customer.where(validness: params[:validness]).all.page(params[:page])
+    else
+      @customers = Customer.all.page(params[:page])
+    end
   end
 
   def show

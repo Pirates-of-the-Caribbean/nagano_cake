@@ -7,6 +7,7 @@
     <%= javascript_include_tag 'public', 'data-turbolinks-track': 'reload' %>
   </head>
 <body>
+<div class="body">
 <% content_for :content do %>
   <%= render 'layouts/public/header' %>
   <% if flash[:notice] %>
@@ -46,5 +47,6 @@
   <%= render 'layouts/public/footer' %>
 <% end %>
 <%= render template: "layouts/application" %>
+</div>
 </body>
 </html>
