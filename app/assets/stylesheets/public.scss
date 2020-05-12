@@ -38,48 +38,7 @@ header .btn{
 	margin: 0 10px 0 auto;
 }
 
-#cart_add_destoroy_btn{
-	margin-bottom: 20px;
-}
-
-.success_btn{
-	text-align: center;
-}
-
-#cart_success_btn{
-	padding: 15px 50px;
-}
-
-.order_content{
-	margin: 30px 0 ;
-}
-
-.order_select{
-	margin-bottom: 15px;
-	margin-left: 20px;
-}
-
-.table-noborder {
-	border-style:none;
-}
-
-.confirm_content{
-	height: 150px;
-}
-
-.thanks_text{
-	margin-top: 200px;
-	text-align: center;
-}
-
-.order_show_title{
-	margin-top: 30px;
-}
-
-.order_show_content{
-	height: 150px;
-}
-
-#order_show_title_fix{
-	margin-left: 530px;
+.table-no-border td{
+  border: none!important;
+  padding: 6px;
 }

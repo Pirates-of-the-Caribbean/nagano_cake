@@ -5,38 +5,40 @@
 <%= form_for(@order, url:orders_confirm_path) do |f| %>
     <div class="order_content">
         <h4>支払方法</h4>
-        <label class="order_select"><%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>クレジットカード</label><br>
-        <label class="order_select"><%= f.radio_button :payment_method, :銀行振込 %>銀行振込</label>
+        <label class="order_select"><%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %><label class="order_choice">クレジットカード</label></label><br>
+        <label class="order_select"><%= f.radio_button :payment_method, :銀行振込 %><label class="order_choice">銀行振込</label></label>
     </div>
     <div class="order_content">
         <h4>お届け先</h4>
         <%= form_tag(orders_confirm_path,:method => 'get') do %>
             <div class="order_select">
-                <label><%= radio_button_tag 'address_select', :ご自身の住所, checked: "checked" %>ご自身の住所</label><br>
-                <%= @customer.postcode %><%= @customer.address %>
+                <label><%= radio_button_tag 'address_select', :ご自身の住所, checked: "checked" %><label class="order_choice">ご自身の住所</label></label><br>
+                <%= @customer.postcode %><%= @customer.address %><br>
                 <%= @customer.last_name %><%= @customer.first_name %>
             </div>
             <div class="order_select">
-            <label><%= radio_button_tag 'address_select', :登録済住所から選択 %>登録済住所から選択</label><br>
+            <label><%= radio_button_tag 'address_select', :登録済住所から選択 %><label class="order_choice">登録済住所から選択</label></label><br>
                 <%= f.collection_select(:address, @registered_addresses, :full_shipping_address, :full_shipping_address) %>
             </div>
-            <div class="order_select">      
-            <label><%= radio_button_tag 'address_select', :新しいお届け先 %>新しいお届け先</label><br>
-                <table class="table-noborder">
+            <div class="order_select">  
+            <label><%= radio_button_tag 'address_select', :新しいお届け先 %><label class="order_choice">新しいお届け先</label></label><br>
+                <table class="table-noborder col-sm-8">
                     <tr>
                         <th>郵便番号(ハイフンなし)</th>
-                        <td><%= text_field_tag 'new_postcode' %></td>
+                        <td><%= text_field_tag 'new_postcode','',size:50 %></td>
                     </tr>
                     <tr>
                         <th>住所</th>
-                        <td><%= text_field_tag 'new_address' %></td>
+                        <td><%= text_field_tag 'new_address','',size:50 %></td>
                     </tr>
                     <tr>
                         <th>宛名</th>
-                        <td><%= text_field_tag 'new_name' %></td>
+                        <td><%= text_field_tag 'new_name','',size:50 %></td>
                     </tr>
                 </table>
             </div>            
+    </div>
+    <div class="btn_space">
     </div>
     <div class="success_btn">
     <%= f.submit '確認画面へ進む', class: "btn btn-primary", id:"cart_success_btn" %>

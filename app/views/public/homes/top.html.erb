@@ -13,7 +13,9 @@
         <br>
 
         <% @genres.each do |genre| %>
+          <% if genre.valid_flag =="有効" %>
         <%= link_to genre.name, items_path(genre_id: genre.id) %>   <br><br>
+        <% end %>
         <% end %>
 
       </div>
