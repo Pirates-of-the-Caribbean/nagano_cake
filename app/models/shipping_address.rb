@@ -6,6 +6,6 @@ class ShippingAddress < ApplicationRecord
     validates :name, presence: true
 
     def full_shipping_address
-        self.postcode + self.address + self.name
+        self.postcode + "　" + self.address + "　" + self.name
     end
 end

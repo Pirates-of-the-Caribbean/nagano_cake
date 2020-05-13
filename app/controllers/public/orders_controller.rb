@@ -31,7 +31,10 @@ class Public::OrdersController < Public::Base
                 flash[:notice] = '配送先を登録してください'
                 redirect_to new_order_path
             else
-                @order.address
+                @registered_addresses = ShippingAddress.find(params[:order][:id])
+                @order.postcode = @registered_addresses.postcode
+                @order.address = @registered_addresses.address
+                @order.name = @registered_addresses.name
             end
         else
             @postcode = params[:new_postcode]
