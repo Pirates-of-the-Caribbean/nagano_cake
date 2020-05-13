@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-sm-offset-2">
-      <br><h3>会員の方はこちらからログイン</h3><br><br>
+      <br><div class = "headline">会員の方はこちらからログイン</div><br><br>
     </div>
     </div>
 
@@ -16,7 +16,7 @@
   <div class="field">
                     <tr>
                       <th>メールアドレス</th>
-                      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+                      <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size:'50px' %></td>
                     </tr>
                     </div>
 
@@ -24,7 +24,7 @@
                     <tr>
                       <th>パスワード</th>
                         <td>
-                        <%= f.password_field :password, autocomplete: "current-password" %>
+                        <%= f.password_field :password, autocomplete: "current-password", size:'50px' %>
                       </td>
                     </tr>
                   </div>
@@ -34,7 +34,7 @@
                   </table>
 
   <div class="actions">
-    <%= f.submit "ログイン", class: "btn btn-primary" %>
+    <br><%= f.submit "ログイン", class: "btn btn-primary" %>
   </div>
 <% end %>
 </div>
@@ -44,12 +44,12 @@
 
 <div class="row">
         <div class="col-sm-offset-2">
-          <h3>登録がお済みでない方</h3>
+          <br><div class = "headline">登録がお済みでない方</div>
         </div>
 
         <div class="row">
           <div class="col-sm-offset-3">
-            <%= link_to"こちら",new_customer_registration_path %>から新規登録を行って下さい。<br>
+            <br><%= link_to"こちら",new_customer_registration_path %>から新規登録を行って下さい。<br>
           </div>
 </div>
 </div>

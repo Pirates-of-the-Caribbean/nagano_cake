@@ -1,12 +1,12 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-sm-offset-2">
-      <br><h3>管理者ログイン</h3><br><br>
+      <br><br><br><div class = "col-sm-offset-1 headline">管理者ログイン</div>
     </div>
     </div>
 
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<br><br><%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class = "row">
       <div class = "col-sm-offset-3 col-sm-6">
         <table class ="table-no-border">
@@ -16,7 +16,7 @@
   <div class="field">
                     <tr>
                       <th>メールアドレス</th>
-                      <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+                      <td><%= f.email_field :email, autofocus: true, autocomplete: "email",size:'50px' %></td>
                     </tr>
                     </div>
 
@@ -24,7 +24,7 @@
                     <tr>
                       <th>パスワード</th>
                         <td>
-                        <%= f.password_field :password, autocomplete: "current-password" %>
+                        <%= f.password_field :password, autocomplete: "current-password",size:'50px' %>
                       </td>
                     </tr>
                   </div>

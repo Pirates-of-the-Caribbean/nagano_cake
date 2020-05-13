@@ -1,13 +1,9 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-offset-1 col-sm-7 "><br><br>
-      <div><h3><%= @customer.last_name + " " + @customer.first_name %>さんの会員情報編集</h3><br><br></div>
-    </div>
-    <div class = "col-sm-4">
-  </div>
+    <br><br><br><div class = "col-sm-offset-1 headline"><%= @customer.last_name + " " + @customer.first_name %>さんの会員情報編集</div>
   </div>
 
-<div class= "row">
+<BR><BR><div class= "row">
   <div class = "col-sm-offset-1 col-sm-6">
 <%= form_for(@customer, url:admin_customer_path) do |f| %>
   <table class="table1">

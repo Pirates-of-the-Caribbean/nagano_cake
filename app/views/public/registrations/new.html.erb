@@ -1,7 +1,8 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-sm-offset-2">
-      <br><h3>会員新規登録</h3><br><br>
+      <br>
+      <div class = "headline">新規会員登録</div><br><br>
     </div>
 
 
@@ -43,7 +44,7 @@
                   <div class="field">
                     <tr>
                       <th>住所</th>
-                      <td><%= f.text_field :address %></td>
+                      <td><%= f.text_field :address, size:'55px' %></td>
                     </tr>
                   </div>
 
@@ -73,7 +74,7 @@
                   </div>
 
 
-        </table><br>
+        </table><br><br>
 
           <div class="actions">
             <%= f.submit "新規登録", class:"btn btn-success" %>
@@ -85,11 +86,11 @@
       <div class="row">
         <div class="col-sm-offset-2">
           <br>
-          <h3>既に登録済の方</h3>
+          <div class = "headline">既に登録済の方</div>
         </div>
 
         <div class="row">
           <div class="col-sm-offset-3">
-            <%= link_to"こちら",new_customer_session_path %>からログインして下さい。<br>
+            <br><%= link_to"こちら",new_customer_session_path %>からログインして下さい。<br>
           </div>
 </div>
