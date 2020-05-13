@@ -13,12 +13,11 @@
         <%= form_tag(orders_confirm_path,:method => 'get') do %>
             <div class="order_select">
                 <label><%= radio_button_tag 'address_select', :ご自身の住所, checked: "checked" %><label class="order_choice">ご自身の住所</label></label><br>
-                <%= @customer.postcode %><%= @customer.address %><br>
-                <%= @customer.last_name %><%= @customer.first_name %>
+                <%= @customer.postcode %>　<%= @customer.address %>　<%= @customer.last_name %><%= @customer.first_name %>
             </div>
             <div class="order_select">
             <label><%= radio_button_tag 'address_select', :登録済住所から選択 %><label class="order_choice">登録済住所から選択</label></label><br>
-                <%= f.collection_select(:address, @registered_addresses, :full_shipping_address, :full_shipping_address) %>
+                <%= f.collection_select(:id, @registered_addresses, :id, :full_shipping_address) %>
             </div>
             <div class="order_select">
             <label><%= radio_button_tag 'address_select', :新しいお届け先 %><label class="order_choice">新しいお届け先</label></label><br>
