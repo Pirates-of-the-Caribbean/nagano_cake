@@ -12,17 +12,17 @@
   text-align : center;
 }
 #container{
-  height: 500px;
+  height: 600px;
 }
 
 .image1 {
-  background-image: url(../top_image1.jpg);
+  background-image: image-url("top_image1.jpg");
 }
 .image2 {
-  background-image: url(../top_image2.jpg);
+  background-image: image-url("top_image2.jpg");
 }
 .image3 {
-  background-image: url(../top_image3.jpg);
+  background-image: image-url("top_image3.jpg");
 }
 
 .top-text{
@@ -35,7 +35,7 @@
 }
 
 .recommend{
-  margin-top: 500px;
+  margin-top: 600px;
 }
 
 .recommend-items{
