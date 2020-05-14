@@ -1,0 +1,12 @@
+<div class = "container">
+	<div class = "row">
+
+<% if @model == 'customer' %>
+  <br><br><br><div class = "col-sm-offset-1 headline">顧客情報検索結果</div>
+  <br><%= render 'admin/customers/search_customers', customers: @records %>
+
+  <% else %>
+  <br><br><br><div class = "col-sm-offset-1 headline">商品情報検索結果</div>
+  <br><%= render 'admin/items/search_items', items: @records %>
+
+  <% end %>

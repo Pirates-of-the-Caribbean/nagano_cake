@@ -1,0 +1,53 @@
+<%= form_for(@item, url:admin_item_path) do |f| %>
+<div class="container">
+    <div class="row">
+<br><br><br><div class = "col-sm-offset-1 headline">商品編集</div>
+</div>
+
+<div class ="row">
+<BR><BR><div class ="col-sm-offset-2 col-sm-3">
+    <%= attachment_image_tag @item, :image, :size => '200x150', fallback: 'no_image.jpg' %>
+    <%= f.attachment_field :image %>
+    </div>
+    <div class ="col-sm-offset-1 col-sm-6">
+    <table class="table_item">
+
+<tr>
+    <th>商品名</th>
+    <td><%= f.text_field :name %></td>
+</tr>
+
+<tr>
+    <th>商品説明</th>
+    <td><%= f.text_area :detail,size: "20x5" %></td>
+</tr>
+
+<tr>
+    <th>ジャンル</th>
+    <td><%= f.collection_select(:genre_id, Genre.all, :id, :name) %></td>
+</tr>
+
+
+<tr>
+    <th>税抜価格</th>
+    <td><%= f.text_field :price %>円</td>
+</tr>
+
+
+<tr>
+    <th>販売ステータス</th>
+    <td><%= f.select :sale_status, [["販売中","販売中"], [ "販売停止中", "販売停止中"]], include_blank: "選択して下さい" %></td>
+</tr>
+</table>
+</div>
+</div>
+<div class="row">
+                        <div class="item_button">
+                        <div class ="col-sm-10">
+    <tr>
+   <th><h3><%= f.submit '変更を保存',class:"btn btn-primary" %></h3></th>
+    </tr>
+<% end %>
+</div>
+</div>
+</div>

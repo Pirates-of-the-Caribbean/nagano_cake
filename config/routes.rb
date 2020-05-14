@@ -11,24 +11,30 @@ Rails.application.routes.draw do
   }
   scope module: :public do
     root to: 'homes#top'
-    resources :customers, only: [:show, :edit, :update]
     get '/customers/withdraw' => 'customers#withdraw'
+    resources :customers, only: [:show, :edit, :update]
+    put "/customers/:id/leave" => "customers#leave", as: 'customer_leave'
     resources :shipping_addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    delete '/cart_items' => 'cart_items#destroy_all'
-    resources :orders, only: [:index, :show, :new, :create]
-    get '/orders/confirm' => 'orders#confirm'
+    delete '/cart_items' => 'cart_items#destroy_all', as:'cart_item_destroy_all'
+    post '/orders/confirm' => 'orders#confirm'
     get '/orders/thanks' => 'orders#thanks'
+    resources :orders, only: [:index, :show, :new, :create] do
+      resource :order_item, only: [:create]
+    end
   end
 
   namespace :admin do
     root to: 'homes#top'
+    get '/search' => 'search#search'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, only: [:index, :show, :new, :create, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
+    get '/customers/:id/orders' => 'orders#customers_order'
+    get '/todays_order' => 'orders#todays_order'
     resources :orders, only: [:index, :show, :update] do
-      resource :order_items, only: [:update]
+      resources :order_items, only: [:update]
     end
   end
 

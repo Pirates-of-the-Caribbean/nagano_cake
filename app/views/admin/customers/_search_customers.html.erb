@@ -1,0 +1,36 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-offset-2 col-sm-8 ">
+      <BR><table class="table table-hover">
+				<thead>
+					<tr>
+					<th>会員ID</th>
+					<th>氏名</th>
+					<th>メールアドレス</th>
+          <th>ステータス</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<% customers.each do |customer| %>
+
+						<td><%= customer.id%> </td>
+						<td><%= link_to admin_customer_path(customer) do %>
+						<%= customer.last_name %> <%=customer.first_name %>
+						<% end %> </td>
+						<td><%= customer.email %></td>
+            <td><% if customer.validness == true %>
+								有効
+								<% else %>
+								退会済
+								<% end %> </td>
+					</tr>
+          <% end %>
+				</tbody>
+			</table>
+    </div>
+		<div class = "col-sm-2"></div>
+		<%= paginate customers, class: "paginate"%>
+	</div>
+	</div>

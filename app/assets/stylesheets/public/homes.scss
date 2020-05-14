@@ -1,3 +1,65 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.genre_search{
+  border : solid 1px ;
+  text-align:center;
+}
+.genre{
+  border-right : solid 1px ;
+  border-left : solid 1px ;
+  border-bottom : solid 1px ;
+  text-align : center;
+}
+#container{
+  height: 600px;
+}
+
+.image1 {
+  background-image: image-url("top_image1.jpg");
+}
+.image2 {
+  background-image: image-url("top_image2.jpg");
+}
+.image3 {
+  background-image: image-url("top_image3.jpg");
+}
+
+.top-text{
+  font-size: 20px;
+  font-family: 'Hiragino Mincho ProN';
+  color: white;
+  background-color: rgba(0,0,0,0.5);
+  position: absolute;
+  bottom: 0;
+}
+
+.recommend{
+  margin-top: 600px;
+}
+
+.recommend-items{
+  display: flex;
+
+}
+.recommend-items > div{
+  width:25%;
+  height: 200px;
+  margin : 5px;
+
+}
+
+.recommend-items-image{
+
+  height:120px;
+}
+
+.show-more{
+  text-align: right;
+}
+
+
+
+.recommend1{
+  margin-right: 40px;
+}

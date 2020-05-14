@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="row">
+		<br><br><br><div class = "col-sm-offset-1 headline">商品詳細</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-offset-1 col-sm-3">
+		<br><br><%= attachment_image_tag @item, :image, :size => '200x150', fallback: 'no_image.jpg' %>
+</div>
+		<BR><BR><div class ="col-sm-8">
+			<table class="table_item table">
+				<tr>
+					<th class="col-sm-3">商品名</th>
+					<td class="col-sm-9"><%= @item.name %></td>
+				</tr>
+				<tr>
+						<th>商品説明</th>
+						<td><%= @item.detail %></td>
+					</tr>
+				<tr>
+					<th>税込価格(税抜価格)</th>
+					<td><%= (@item.price*1.1).floor %>
+						(<%= @item.price %>)</td>
+					</tr>
+
+					<tr>
+						<th>ジャンル</th>
+						<td><%= @item.genre.name %></td>
+					</tr>
+					<tr>
+						<th>販売ステータス</th>
+						<td><%= @item.sale_status %></td>
+					</tr>
+				</table>
+			</div>
+
+</div>
+		</div>
+		<div class="row">
+			<div class="item_button">
+				<div class ="col-sm-9">
+					<tr>
+						<th><%= link_to "編集", edit_admin_item_path(@item),class:"btn btn-primary" %></th>
+					</tr>
+
+				</div>
+
+			</div>
+		</div>
+	</div>

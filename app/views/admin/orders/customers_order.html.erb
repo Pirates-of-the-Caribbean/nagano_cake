@@ -1,0 +1,43 @@
+<div class = "container">
+  <div class = "row">
+    <br><br><br><div class = "col-sm-offset-1 headline"><%= @customers.last_name %> <%= @customers.first_name %>様の注文履歴一覧</div>
+  </div>
+  <BR><BR>
+
+
+
+
+  <div class = "row">
+    <div class = "col-sm-offset-2 col-sm-8 ">
+      <table class="table table-hover">
+				<thead>
+					<tr>
+					<th>購入日時</th>
+					<th>購入者</th>
+					<th>注文個数</th>
+          <th>注文ステータス</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<% @customers.orders.each do |order| %>
+
+						<td><%= link_to admin_order_path(order.id) do %>
+            <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S").to_s %> <% end %></td>
+						<td>
+						<%= order.customer.last_name %> <%= order.customer.first_name %> 様
+            </td>
+
+
+						<td>
+						<%= order.order_items.pluck(:quantity).sum %>
+						</td>
+
+            <td><%= order.status %></td>
+					</tr>
+          <% end %>
+				</tbody>
+			</table>
+    </div>
+  </div>

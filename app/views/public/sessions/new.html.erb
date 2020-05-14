@@ -1,26 +1,56 @@
-<h2>Log in</h2>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-offset-2">
+      <br><div class = "headline">会員の方はこちらからログイン</div><br><br>
+    </div>
+    </div>
+
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class = "row">
+      <div class = "col-sm-offset-3 col-sm-6">
+        <table class ="table-no-border">
+
+
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+                    <tr>
+                      <th>メールアドレス</th>
+                      <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size:'50px' %></td>
+                    </tr>
+                    </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+  <div class="field">
+                    <tr>
+                      <th>パスワード</th>
+                        <td>
+                        <%= f.password_field :password, autocomplete: "current-password", size:'50px' %>
+                      </td>
+                    </tr>
+                  </div>
+<th></th>
+<td class = "forget-password">
+<%= link_to "=>パスワードを忘れた方はこちら", new_customer_password_path%></td>
+                  </table>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <br><%= f.submit "ログイン", class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>
+      </div>
 
-<%= render "public/shared/links" %>
+
+
+<div class="row">
+        <div class="col-sm-offset-2">
+          <br><div class = "headline">登録がお済みでない方</div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-offset-3">
+            <br><%= link_to"こちら",new_customer_registration_path %>から新規登録を行って下さい。<br>
+          </div>
+</div>
+</div>
+</div>

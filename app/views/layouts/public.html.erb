@@ -3,13 +3,50 @@
   <head>
     <title>namespace - public</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'public', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'public', 'data-turbolinks-track': 'reload' %>
   </head>
 <body>
-<% content_for :content do %>  
+<div id="wrapper">
+<% content_for :content do %>
+  <%= render 'layouts/public/header' %>
+  <% if flash[:notice] %>
+  	<div class="flash">
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-sm-5">
+  					<%= flash[:notice] %>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  <% end %>
+    <% if flash[:error] %>
+  	<div class="flash">
+  		<div class="container">
+  			<div class="row">
+  				<div class="col-sm-5">
+  					<%= flash[:error] %>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  <% end %>
+      <% if flash[:password] %>
+    <div class="flash">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-5">
+            <%= flash[:password] %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
   <%= yield %>
+  <%= render 'layouts/public/footer' %>
 <% end %>
 <%= render template: "layouts/application" %>
+</div>
 </body>
 </html>

@@ -1,3 +1,53 @@
 // Place all the styles related to the public/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.success_btn{
+	text-align: center;
+}
+
+#cart_success_btn{
+	padding: 15px 50px;
+}
+
+.order_content{
+	margin: 30px 0 ;
+}
+
+.order_select{
+	margin-bottom: 15px;
+	margin-left: 20px;
+}
+
+.table-noborder {
+	border-style:none;
+}
+
+.thanks_text{
+	margin-top: 200px;
+	margin-bottom: 200px;
+	text-align: center;
+}
+
+.order_show_title{
+	margin-top: 30px;
+}
+
+.order_show_content{
+	height: 150px;
+}
+
+#order_show_title_fix{
+	margin-left: 530px;
+}
+
+.btn_space{
+    height: 100px;
+}
+
+.order_choice{
+    margin-left: 10px;
+}
+
+.table-noborder th{
+    height: 30px;
+}

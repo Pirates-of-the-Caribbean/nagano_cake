@@ -1,0 +1,119 @@
+<div class = "container">
+  <div class = "row">
+    <br><br><br><div class = "col-sm-offset-1 headline">本日の注文履歴一覧</div>
+  </div>
+
+
+    <BR><BR><div class = "row">
+    <div class="col-sm-5">
+      <table class="table">
+        <tr>
+          <th class="col-sm-2">購入者</th>
+          <td class="col-sm-2">
+            <%# 購入者氏名 %>
+            <%= link_to admin_customer_path(@order.customer.id) do %>
+            <%= @order.customer.last_name + @order.customer.first_name %>
+            <% end %>様
+          </td>
+        </tr>
+
+        <tr>
+          <th class="col-sm-2">配送先 宛名</th>
+          <td class="col-sm-2">
+            <%# 宛名+配送先 %>
+            <%= @order.name %> 様
+          </td>
+        </tr>
+
+        <tr>
+          <th class="col-sm-2">配送先 住所</th>
+          <td class="col-sm-2">
+            <%= @order.address %>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="col-sm-2">支払方法</th>
+          <td class="col-sm-2">
+            <%# 支払い方法 %>
+            <%= @order.payment_method %>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="col-sm-2">注文ステータス</th>
+          <td class="col-sm-2">
+            <%# 注文ステータス　プルダウンと更新ボタン %>
+            <%= form_with(model:[@order], url: admin_order_path) do |f| %>
+            <%= f.select :status, [["入金待ち","入金待ち"],["入金確認","入金確認"],["製作中","製作中"],["発送準備中","発送準備中"],["発送済み","発送済み"]] %>　
+            <%= f.submit "更新", class:"btn btn-primary" %>
+            </td>
+            <% end %>
+        </tr>
+    </table>
+    </div>
+    </div>
+
+    <div class ="row">
+    <div class="col-sm-8">
+
+        <table class="row table">
+          <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          <% @sum_price = 0%>
+          <% @order_items.each do |order_item| %>
+          <% if order_item.order_id == @order.id %>
+          <%# ↓注文商品の税込単価 %>
+          <% order_price_including_tax = order_item.order_price * 1.1 %>
+          <%# ここまで %>
+          <tr>
+            <td><%= order_item.item.name %> </td>
+            <td><%= order_price_including_tax.floor %></td>
+            <td><%=order_item.quantity %></td>
+            <td><% subtotal_price = order_price_including_tax.floor * order_item.quantity %>
+                <%= subtotal_price %> </td>
+                <% @sum_price += subtotal_price %>
+            <td>
+            <%# model: order_itemは@order.order_itemsだから注文商品を指定している？ %>
+            <%= form_with(model:[order_item], url: admin_order_order_item_path(order_id: @order.id, id: order_item.id)) do |f| %>
+            <%= f.select :production_status, [["着手不可","着手不可"],["製作待ち","製作待ち"],["製作中","製作中"],["製作完了","製作完了"]] %>　<%= f.submit "更新", class:"btn btn-primary" %>
+            </td>
+
+            <% end %>
+            <% end %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        </div>
+        <div class ="sm-offset-1 col-sm-3"><br><br><br>
+    <table class="row table">
+
+      <tr>
+        <th>商品合計</th>
+        <td>
+          <%= @sum_price %>円</td>
+      </tr>
+
+      <tr>
+        <th>送料</th>
+        <td><%= @order.carriage %>円</td>
+      </tr>
+
+      <tr>
+        <th>請求額</th>
+        <td><%= @order.total_price %>円</td>
+      </tr>
+    </table>
+    </div>
+</div>

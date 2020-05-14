@@ -1,0 +1,67 @@
+<div class="main">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-offset-1 col-sm-6">
+				<br><br><br><div class = "headline">配送先登録/一覧</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<br><%= form_for(@shipping_address) do |f| %>
+				<% if @shipping_address.errors.any? %>
+				  <div id="error_explanation" class="alert alert-danger">
+				    <ul>
+				      <% @shipping_address.errors.full_messages.each do |message| %>
+				        <li><%= message %></li>
+				      <% end %>
+				    </ul>
+				  </div>
+				<% end %>
+				<div class="col-sm-10">
+				<table class="table" id="new_shipping_address">
+					<tr>
+						<th class="col-sm-3">郵便番号(ハイフンなし)</th>
+						<td class="col-sm-7"><%= f.text_field :postcode %></td>
+						<td class="col-sm-2"></td>
+					</tr>
+					<tr>
+						<th>住所</th>
+						<td><%= f.text_field :address, size: "60" %></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th>宛名</th>
+						<td><%= f.text_field :name %></td>
+						<td><%= f.submit "登録する", class: "btn btn-success" %></td>
+					</tr>
+				</table>
+				</div>
+			<% end %>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-8">
+				<table class="table table-bordered" id="index_shipping_address">
+					<tr>
+						<th class="col-sm-1">郵便番号</th>
+						<th class="col-sm-3">住所</th>
+						<th class="col-sm-1">宛名</th>
+						<th class="col-sm-2"></th>
+					</tr>
+					<% @shipping_addresses.each do |shipping_address| %>
+					<tr>
+						<td><%= shipping_address.postcode %></td>
+						<td><%= shipping_address.address %></td>
+						<td><%= shipping_address.name %></td>
+						<td><%= link_to "編集する", edit_shipping_address_path(shipping_address.id),
+						 class: "btn btn-primary" %>
+							<%= link_to "削除する", shipping_address_path(shipping_address.id), method: :delete,
+						 class: "btn btn-danger" %>
+						</td>
+					</tr>
+					<% end %>
+				</table>
+	</div>
+</div>
+</div>
+</div>

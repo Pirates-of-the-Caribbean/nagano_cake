@@ -1,3 +1,17 @@
 // Place all the styles related to the public/customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#edit_table th,
+#edit_table td{
+	border: none;
+}
+
+#menu_table th,
+#menu_table td{
+	border: none;
+}
+
+#withdraw_text{
+	margin-top: 150px;
+	text-align: center;
+}

@@ -1,0 +1,79 @@
+<div class="main">
+<div class="container">
+	<div class="row">
+    <br><br><br><div class = "col-sm-offset-1 headline">注文履歴詳細</div>
+<div class="order_show_title">
+<label>注文情報</label>
+<label id="order_show_title_fix">請求情報</label>
+</div>
+<div class="order_show_content">
+<div class="col-sm-6">
+<table class="table table-bordered">
+    <tr>
+        <th class="active col-sm-2">注文日</th>
+        <td class="col-sm-4"><%= @order.created_at.strftime("%Y年%m月%d日").to_s %></td>
+    </tr>
+    <tr>
+        <th class="active">配送先</th>
+        <td><%= @order.postcode %><%= @order.address %><%= @order.name %></td>
+    </tr>
+    <tr>
+        <th class="active">支払方法</th>
+        <td><%= @order.payment_method %></td>
+    </tr>
+    <tr>
+        <th class="active">ステータス</th>
+        <td><%= @order.status %></td>
+    </tr>
+</table>
+</div>
+
+<div class="col-sm-4">
+<table class="table table-bordered">
+    <tr>
+        <th class="active col-sm-4">商品合計</th>
+        <td><%= @order.total_price - @order.carriage %></td>
+    </tr>
+    <tr>
+        <th class="active">配送料</th>
+        <td><%= @order.carriage %></td>
+    </tr>
+    <tr>
+        <th class="active">ご請求額</th>
+        <td><%= @order.total_price %></td>
+    </tr>
+</table>
+</div>
+</div>
+
+<div class="order_show_title">
+<label>注文内容</label>
+</div>
+
+<div class="col-sm-10">
+<table class="table table-bordered">
+    <tr class="active">
+        <th class="col-sm-5">商品</th>
+        <th class="col-sm-2">単価(税込)</th>
+        <th class="col-sm-1">個数</th>
+        <th class="col-sm-2">小計</th>
+    </tr>
+    <% @order_items.each do |order_item| %>
+    <tr>
+        <td><%= order_item.item.name %></td>
+        <td>
+            <% price_including_tax = order_item.order_price * 1.1 %>
+            <%= price_including_tax.floor %>
+        </td>
+        <td><%= order_item.quantity %></td>
+        <td>
+            <% subtotal_price = price_including_tax.floor * order_item.quantity %>
+            <%= subtotal_price.floor %>
+        </td>
+    <tr>
+    <% end %>
+</table>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,14 @@
+<div class="main">
+	<div class="container">
+		<div class="row">
+			<div id="withdraw_text">
+				<h3>本当に退会しますか？</h3>
+				<h4>退会すると、会員登録情報や<br>
+				これまでの購入履歴が閲覧できなくなります。<br>
+				退会する場合は、「退会する」をクリックしてください。<br></h4>
+				<%= link_to "退会しない", customer_path(current_customer), class: "btn btn-primary" %>
+				<%= link_to "退会する", customer_leave_path(current_customer), method: :put, class: "btn btn-danger" %>
+			</div>
+		</div>
+	</div>
+</div>

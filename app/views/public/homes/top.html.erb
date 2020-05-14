@@ -1,2 +1,58 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class = "page">
+<br><br><br>
+<div class="container">
+  <div class ="row">
+
+
+
+    <%# 説明とおすすめ商品一覧 %>
+    <div class = "col-sm-12">
+      <div id="container">
+        <div id="theTarget">
+          <div class="image1"></div>
+          <div class="image2"></div>
+          <div class="image3"></div>
+        </div>
+      </div>
+      <div class = "top-text">
+      ようこそ、Nagano Cakeへ！<br>
+      長野県名産のプルーンをふんだんに使った、<br>
+      知る人ぞ知るケーキ屋さんです！<br>
+      </div>
+    </div>
+
+
+      <div class="row">
+        <div class ="col-sm-offset-2">
+            <div class = "recommend"><br>
+              <h2><b>おすすめ商品</b></h2>
+            </div>
+        </div>
+      </div>
+
+
+          <div class = "row">
+            <% @items.each do |item| %>
+              <%= link_to item_path(item.id) do %>
+              <div class = "col-sm-2 recommend1">
+                <%= attachment_image_tag item, :image, :size => '200x140', fallback:"no_image.jpg" %><br>
+                <%= item.name %><% end %><br>
+                <%= item.price %>円
+                <% if item.sale_status == "販売停止中" %>
+                <span class="label label-danger"> 売り切れ</span>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
+
+
+      <%# item一覧へのリンク %>
+      <div class ="show-more">
+        <%= link_to "もっと見る>>", items_path %>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
