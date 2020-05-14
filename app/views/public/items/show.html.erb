@@ -25,8 +25,9 @@
 
         <%= @item.detail %>
      <h3><div class="item_price">
-        ¥<%= @item.price %>　(税込)
 
+              <% price_including_tax = @item.price * 1.1 %>
+            ¥<%= price_including_tax.floor %>　(税込)
       </div></h3>
        <%= form_for(@cart_item ,url:cart_items_path) do |f| %>
 <%= f.hidden_field :item_id, :value => @item.id %>
